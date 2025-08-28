@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Amalfi Coast';
+    src: url('AmalfiCoast.eot');
+    src: url('AmalfiCoast.eot?#iefix') format('embedded-opentype'),
+        url('AmalfiCoast.woff2') format('woff2'),
+        url('AmalfiCoast.woff') format('woff'),
+        url('AmalfiCoast.ttf') format('truetype'),
+        url('AmalfiCoast.svg#AmalfiCoast') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
