@@ -271,6 +271,36 @@ function hero() {
     });
   });
 }
+function effectText() {
+  gsap.registerPlugin(ScrollTrigger, SplitText);
+  const elementsBlur = document.querySelectorAll(".effect-blur");
+  elementsBlur.forEach((elementBlur) => {
+    let splitBlur = SplitText.create(elementBlur, {
+      type: "words, chars",
+      charsClass: "split-char"
+    });
+    gsap.fromTo(
+      splitBlur.chars,
+      {
+        filter: "blur(5px) ",
+        y: 10,
+        willChange: "filter, transform",
+        opacity: 0
+      },
+      {
+        ease: "none",
+        filter: "blur(0px)",
+        y: 0,
+        stagger: 0.025,
+        opacity: 1,
+        scrollTrigger: {
+          trigger: elementBlur,
+          start: "top 90%"
+        }
+      }
+    );
+  });
+}
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
@@ -280,6 +310,7 @@ const init = () => {
   itemParallax();
   sectionOffers();
   hero();
+  effectText();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body
