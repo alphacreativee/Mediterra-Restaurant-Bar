@@ -42,38 +42,34 @@
 .color-bg-2 {
   background-color: var(--color-bg-2);
 }
+.h0-font {
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 400;
+}
 .h1-font {
-  font-size: 84px;
-  line-height: 92px;
-  font-weight: 300;
+  font-size: 38px;
+  line-height: 65px;
+  font-weight: 400;
 }
 .h2-font {
   font-size: 32px;
-  line-height: 44px;
+  line-height: 48px;
   font-weight: 400;
 }
 .h3-font {
-  font-size: 22px;
-  line-height: 28px;
-  font-weight: 600;
-}
-.h4-font {
   font-size: 20px;
   line-height: 28px;
-  font-weight: 600;
+  font-weight: 400;
 }
+
 .b1-font {
-  font-size: 15px;
-  line-height: 24px;
+  font-size: 16px;
+  line-height: 22px;
   font-weight: 500;
 }
-.btn-font {
-  font-size: 13px;
-  line-height: 1;
-  font-weight: 600;
-}
-.tag-font {
-  font-size: 13px;
-  line-height: 2;
+.b2-font {
+  font-size: 14px;
+  line-height: 22px;
   font-weight: 600;
 }
