@@ -1,0 +1,17 @@
+.section-offers {
+  height: 100vh;
+  padding: 40px;
+  background-color: rgba($color: #f2bf33, $alpha: 0.15);
+
+  .offers {
+    &-background {
+      position: relative;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
