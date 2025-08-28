@@ -38,7 +38,8 @@ function customDropdown() {
         e.stopPropagation();
 
         // Store current values from the button
-        const currentImg = valueSelect.querySelector("img").src;
+        const currentImgEl = valueSelect.querySelector("img");
+        const currentImg = currentImgEl ? currentImgEl.src : "";
         const currentText = valueSelect.querySelector("span").textContent;
         const currentHtml = valueSelect.innerHTML;
 
@@ -49,7 +50,11 @@ function customDropdown() {
         valueSelect.innerHTML = clickedHtml;
 
         // Update the clicked item with the previous button values
-        item.innerHTML = `<img src="${currentImg}" alt="" /><span>${currentText}</span>`;
+        if (currentImg) {
+          item.innerHTML = `<img src="${currentImg}" alt="" /><span>${currentText}</span>`;
+        } else {
+          item.innerHTML = `<span>${currentText}</span>`;
+        }
 
         closeAllDropdowns();
       });
@@ -102,7 +107,7 @@ function marquee() {
     gsap.set(content, {
       x: 0,
       willChange: "transform",
-      force3D: true,
+      force3D: true
     });
 
     const tl = gsap.timeline({ repeat: -1 });
@@ -111,8 +116,8 @@ function marquee() {
       duration: fullWidth / speed,
       ease: "none",
       modifiers: {
-        x: (x) => `${parseFloat(x) % fullWidth}px`,
-      },
+        x: (x) => `${parseFloat(x) % fullWidth}px`
+      }
     });
 
     // Hover pause
@@ -127,7 +132,7 @@ function intro() {
   if (document.querySelector(".intro").length < 1) return;
 
   const tl = gsap.timeline({
-    defaults: { duration: 2, ease: "power2.inOut" },
+    defaults: { duration: 2, ease: "power2.inOut" }
   });
 
   tl.fromTo(
@@ -137,7 +142,7 @@ function intro() {
       clipPath: "inset(0% 0% 100% 0%)",
       onComplete: () => {
         document.querySelector(".intro").classList.add("d-none");
-      },
+      }
     }
   );
 }
@@ -161,9 +166,9 @@ function itemParallax() {
           end: "bottom top",
           scrub: 1,
           ease: "power4",
-          delay: 0.2,
+          delay: 0.2
           // markers: true
-        },
+        }
       }
     );
   });
@@ -182,8 +187,8 @@ function itemParallax() {
         trigger: section,
         start: "top 80%",
         end: "bottom top",
-        scrub: true,
-      },
+        scrub: true
+      }
     });
   });
 }
@@ -195,8 +200,6 @@ function sectionOffers() {
   const offerCount = offerItems.length;
 
   if (offerCount < 1) return;
-
-  console.log(offerItems);
 
   offerItems.on("mouseenter", function () {
     const thisItemData = $(this).data("tab");
@@ -222,7 +225,7 @@ function CTA() {
       self.direction === 1
         ? document.querySelector(".cta").classList.add("hide")
         : document.querySelector(".cta").classList.remove("hide");
-    },
+    }
   });
 }
 function hero() {
@@ -233,7 +236,7 @@ function hero() {
       speed: 1500,
       loop: true,
       autoplay: {
-        delay: 3000,
+        delay: 3000
       },
 
       on: {
@@ -263,8 +266,8 @@ function hero() {
               slideInner.style.transition = `${speed}ms ${easing}`;
             }
           });
-        },
-      },
+        }
+      }
     });
   });
 }

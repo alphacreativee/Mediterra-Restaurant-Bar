@@ -84,6 +84,53 @@
         height: 128px;
       }
 
+      &:has([name="date"]) {
+        position: relative;
+
+        &::after {
+          content: "";
+          width: 12px;
+          height: 12px;
+          position: absolute;
+          top: 50%;
+          right: 16px;
+          transform: translateY(-50%);
+          background-image: url("../../images/ic_calender.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+
+      .dropdown-custom {
+        height: 100%;
+        width: 100%;
+        padding: 18px 16px;
+
+        &-btn {
+          justify-content: space-between;
+
+          .icon {
+            width: 12px;
+            height: 12px;
+          }
+
+          span {
+            font-weight: 500;
+          }
+        }
+
+        &-menu {
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          border: 1px solid rgba($color: #174b9c, $alpha: 0.3);
+
+          span {
+            font-weight: 500;
+          }
+        }
+      }
+
       &-group {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
