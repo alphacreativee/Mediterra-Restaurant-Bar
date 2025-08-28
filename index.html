@@ -104,7 +104,7 @@
           </h2>
         </div>
       </section>
-      <section class="about-us">
+      <section class="section-about">
         <div class="container-fluid p-0">
           <div class="element"></div>
           <div class="main-content">
@@ -159,8 +159,8 @@
             <div class="desc b1-font color-primary">
               Exclusive Offers & Mediterranean Moments
             </div>
-            <ul class="list-item">
-              <li class="h3-font color-primary" data-tab="1">
+            <div class="list-item">
+              <a href="#" class="h3-font color-primary" data-tab="1">
                 Premium Wine Tasting Night
 
                 <div class="icon">
@@ -179,8 +179,8 @@
                     />
                   </svg>
                 </div>
-              </li>
-              <li class="h3-font color-primary" data-tab="2">
+              </a>
+              <a href="#" class="h3-font color-primary" data-tab="2">
                 Mediterranean Feast Platter
                 <div class="icon">
                   <svg
@@ -198,8 +198,8 @@
                     />
                   </svg>
                 </div>
-              </li>
-              <li class="h3-font color-primary" data-tab="3">
+              </a>
+              <a href="#" class="h3-font color-primary" data-tab="3">
                 Mediterranean Cocktail Hour
 
                 <div class="icon">
@@ -218,8 +218,8 @@
                     />
                   </svg>
                 </div>
-              </li>
-            </ul>
+              </a>
+            </div>
             <div class="list-item__image">
               <div class="image" data-tab="1">
                 <img src="./assets/images/draf/offers-1.webp" alt="" />
@@ -230,6 +230,112 @@
               <div class="image" data-tab="3">
                 <img src="./assets/images/draf/offers-1.webp" alt="" />
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section-booking">
+        <div class="container-fluid p-0 booking-wrapper">
+          <div class="booking-background image-parallax">
+            <img
+              src="./assets/images/draf/background-section-booking.webp"
+              alt=""
+            />
+          </div>
+          <div class="booking-form">
+            <div class="booking-form__wrapper">
+              <h2 class="title h1-font font-hand color-primary text-center">
+                Book a table
+              </h2>
+              <form action="">
+                <div class="field-group">
+                  <div class="field">
+                    <input
+                      type="text"
+                      name="date"
+                      placeholder="Arrival"
+                      autocomplete="off"
+                      readonly
+                    />
+                  </div>
+                  <div class="field">
+                    <div class="dropdown-custom">
+                      <div class="dropdown-custom-btn">
+                        <div class="value-select">
+                          <span>Time</span>
+                        </div>
+                        <div class="icon">
+                          <img src="./assets/images/ic_arrow_down.svg" alt="" />
+                        </div>
+                      </div>
+                      <div class="dropdown-custom-menu">
+                        <div class="dropdown-custom-item">
+                          <span>17:30</span>
+                        </div>
+
+                        <div class="dropdown-custom-item">
+                          <span>18:00</span>
+                        </div>
+                        <div class="dropdown-custom-item">
+                          <span>18:00</span>
+                        </div>
+                        <div class="dropdown-custom-item">
+                          <span>18:30</span>
+                        </div>
+                        <div class="dropdown-custom-item">
+                          <span>19:00</span>
+                        </div>
+                        <div class="dropdown-custom-item">
+                          <span>19:30</span>
+                        </div>
+                        <div class="dropdown-custom-item">
+                          <span>20:00</span>
+                        </div>
+                        <div class="dropdown-custom-item">
+                          <span>20:30</span>
+                        </div>
+                        <div class="dropdown-custom-item">
+                          <span>21:00</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="field-group">
+                  <div class="field">
+                    <input
+                      type="number"
+                      name="adult"
+                      placeholder="Adults"
+                      autocomplete="off"
+                    />
+                  </div>
+                  <div class="field">
+                    <input
+                      type="number"
+                      name="child"
+                      placeholder="Children (<6 yrs old)"
+                      autocomplete="off"
+                    />
+                  </div>
+                </div>
+                <div class="field">
+                  <input type="text" placeholder="Fullname" name="fullname" />
+                </div>
+                <div class="field">
+                  <input type="email" placeholder="Email" name="email" />
+                </div>
+                <div class="field">
+                  <input type="text" placeholder="Phone" name="phone" />
+                </div>
+                <div class="field">
+                  <textarea
+                    name="message"
+                    placeholder="Special request"
+                  ></textarea>
+                </div>
+                <button type="submit">SUBMIT REQUEST</button>
+              </form>
             </div>
           </div>
         </div>
