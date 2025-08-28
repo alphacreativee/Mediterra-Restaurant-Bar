@@ -123,11 +123,30 @@ function marquee() {
     }
   });
 }
+function intro() {
+  if (document.querySelector(".intro").length < 1) return;
+
+  const tl = gsap.timeline({
+    defaults: { duration: 2, ease: "power2.inOut" },
+  });
+
+  tl.fromTo(
+    ".intro",
+    { clipPath: "inset(0% 0% 0% 0%)" },
+    {
+      clipPath: "inset(0% 0% 100% 0%)",
+      onComplete: () => {
+        document.querySelector(".intro").classList.add("d-none");
+      },
+    }
+  );
+}
 
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
   marquee();
+  intro();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body
