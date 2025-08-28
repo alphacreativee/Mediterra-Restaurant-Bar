@@ -65,3 +65,7 @@ body {
   background-image: url("../../images/bg.webp");
   background-repeat: repeat;
 }
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-secondary);
+}
