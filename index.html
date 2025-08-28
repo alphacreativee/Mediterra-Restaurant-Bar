@@ -30,6 +30,16 @@
     </script>
   </head>
   <body>
+    <!-- intro -->
+    <script>
+      fetch("./components/intro.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("intro").innerHTML = data;
+        });
+    </script>
+    <div id="intro" class="intro"></div>
+    <!-- end intro -->
     <!-- layout -->
     <!-- header -->
     <script>
@@ -53,7 +63,19 @@
     <header id="header"></header>
     <!-- end header -->
     <main>
-      <h1>helo</h1>
+      <section class="hero">
+        <div class="hero-img">
+          <img src="./assets/images/draf/banner-hero.webp" alt="" />
+        </div>
+        <div class="hero-content">
+          <div class="hero-content-hand color-secondary font-hand h1-font">
+            Mediterra Restaurant & Bar
+          </div>
+          <h2 class="h0-font color-white hero-content-title">
+            Savory Journeys tothe Southern Shores
+          </h2>
+        </div>
+      </section>
       <section class="about-us">
         <div class="container-fluid p-0">
           <div class="element"></div>
