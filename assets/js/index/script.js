@@ -141,12 +141,25 @@ function intro() {
     }
   );
 }
-
+function CTA() {
+  if (document.querySelector(".cta").length < 1) return;
+  ScrollTrigger.create({
+    start: "top+=100vh top",
+    end: 99999,
+    paused: true,
+    onUpdate: (self) => {
+      self.direction === 1
+        ? document.querySelector(".cta").classList.add("hide")
+        : document.querySelector(".cta").classList.remove("hide");
+    },
+  });
+}
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
   marquee();
   intro();
+  CTA();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body

@@ -40,6 +40,16 @@
     </script>
     <div id="intro" class="intro"></div>
     <!-- end intro -->
+    <!-- cta  -->
+    <!-- end cta -->
+    <script>
+      fetch("./components/cta.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("cta").innerHTML = data;
+        });
+    </script>
+    <div id="cta" class="cta"></div>
     <!-- layout -->
     <!-- header -->
     <script>
