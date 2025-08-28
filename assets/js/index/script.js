@@ -191,7 +191,7 @@ function itemParallax() {
 function sectionOffers() {
   if ($(".section-offers").length < 1) return;
 
-  const offerItems = $(".section-offers .list-item li");
+  const offerItems = $(".section-offers .list-item a");
   const offerCount = offerItems.length;
 
   if (offerCount < 1) return;
