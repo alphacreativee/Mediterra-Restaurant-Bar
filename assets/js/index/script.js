@@ -102,7 +102,7 @@ function marquee() {
     gsap.set(content, {
       x: 0,
       willChange: "transform",
-      force3D: true
+      force3D: true,
     });
 
     const tl = gsap.timeline({ repeat: -1 });
@@ -111,8 +111,8 @@ function marquee() {
       duration: fullWidth / speed,
       ease: "none",
       modifiers: {
-        x: (x) => `${parseFloat(x) % fullWidth}px`
-      }
+        x: (x) => `${parseFloat(x) % fullWidth}px`,
+      },
     });
 
     // Hover pause
@@ -127,7 +127,7 @@ function intro() {
   if (document.querySelector(".intro").length < 1) return;
 
   const tl = gsap.timeline({
-    defaults: { duration: 2, ease: "power2.inOut" }
+    defaults: { duration: 2, ease: "power2.inOut" },
   });
 
   tl.fromTo(
@@ -137,7 +137,7 @@ function intro() {
       clipPath: "inset(0% 0% 100% 0%)",
       onComplete: () => {
         document.querySelector(".intro").classList.add("d-none");
-      }
+      },
     }
   );
 }
@@ -161,9 +161,9 @@ function itemParallax() {
           end: "bottom top",
           scrub: 1,
           ease: "power4",
-          delay: 0.2
+          delay: 0.2,
           // markers: true
-        }
+        },
       }
     );
   });
@@ -182,8 +182,8 @@ function itemParallax() {
         trigger: section,
         start: "top 80%",
         end: "bottom top",
-        scrub: true
-      }
+        scrub: true,
+      },
     });
   });
 }
@@ -222,7 +222,50 @@ function CTA() {
       self.direction === 1
         ? document.querySelector(".cta").classList.add("hide")
         : document.querySelector(".cta").classList.remove("hide");
-    }
+    },
+  });
+}
+function hero() {
+  document.querySelectorAll(".swiper-hero").forEach((el) => {
+    const swiper = new Swiper(el, {
+      slidesPerView: 1,
+      watchSlidesProgress: true,
+      speed: 1500,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+      },
+
+      on: {
+        progress(swiper) {
+          swiper.slides.forEach((slide) => {
+            const slideProgress = slide.progress || 0;
+            const innerOffset = swiper.width * 0.9;
+            const innerTranslate = slideProgress * innerOffset;
+
+            const slideInner = slide.querySelector(".hero-box");
+            if (slideInner && !isNaN(innerTranslate)) {
+              slideInner.style.transform = `translate3d(${innerTranslate}px, 0, 0)`;
+            }
+          });
+        },
+        touchStart(swiper) {
+          swiper.slides.forEach((slide) => {
+            slide.style.transition = "";
+          });
+        },
+        setTransition(swiper, speed) {
+          const easing = "cubic-bezier(0.25, 0.1, 0.25, 1)";
+          swiper.slides.forEach((slide) => {
+            slide.style.transition = `${speed}ms ${easing}`;
+            const slideInner = slide.querySelector(".hero-box");
+            if (slideInner) {
+              slideInner.style.transition = `${speed}ms ${easing}`;
+            }
+          });
+        },
+      },
+    });
   });
 }
 const init = () => {
@@ -233,6 +276,7 @@ const init = () => {
   CTA();
   itemParallax();
   sectionOffers();
+  hero();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body
