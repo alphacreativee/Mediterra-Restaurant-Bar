@@ -102,7 +102,7 @@ function marquee() {
     gsap.set(content, {
       x: 0,
       willChange: "transform",
-      force3D: true,
+      force3D: true
     });
 
     const tl = gsap.timeline({ repeat: -1 });
@@ -111,8 +111,8 @@ function marquee() {
       duration: fullWidth / speed,
       ease: "none",
       modifiers: {
-        x: (x) => `${parseFloat(x) % fullWidth}px`,
-      },
+        x: (x) => `${parseFloat(x) % fullWidth}px`
+      }
     });
 
     // Hover pause
@@ -127,7 +127,7 @@ function intro() {
   if (document.querySelector(".intro").length < 1) return;
 
   const tl = gsap.timeline({
-    defaults: { duration: 2, ease: "power2.inOut" },
+    defaults: { duration: 2, ease: "power2.inOut" }
   });
 
   tl.fromTo(
@@ -137,9 +137,80 @@ function intro() {
       clipPath: "inset(0% 0% 100% 0%)",
       onComplete: () => {
         document.querySelector(".intro").classList.add("d-none");
-      },
+      }
     }
   );
+}
+function itemParallax() {
+  if ($(".js-parallax").length < 1 && $(".image-parallax").length < 1) return;
+
+  gsap.utils.toArray(".js-parallax").forEach((wrap) => {
+    const y = parseFloat(wrap.getAttribute("data-y")) || 100;
+    const direction = wrap.getAttribute("data-direction") || "up";
+
+    const fromY = direction === "down" ? -y : y;
+
+    gsap.fromTo(
+      wrap,
+      { y: fromY },
+      {
+        y: 0,
+        scrollTrigger: {
+          trigger: wrap,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: 1,
+          ease: "power4",
+          delay: 0.2
+          // markers: true
+        }
+      }
+    );
+  });
+
+  document.querySelectorAll(".image-parallax").forEach((section) => {
+    const media = section.querySelector("img, video");
+
+    if (!media) return;
+
+    gsap.set(media, { yPercent: 10 });
+
+    gsap.to(media, {
+      yPercent: -10,
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        start: "top 80%",
+        end: "bottom top",
+        scrub: true
+      }
+    });
+  });
+}
+
+function sectionOffers() {
+  if ($(".section-offers").length < 1) return;
+
+  const offerItems = $(".section-offers .list-item li");
+  const offerCount = offerItems.length;
+
+  if (offerCount < 1) return;
+
+  console.log(offerItems);
+
+  offerItems.on("mouseenter", function () {
+    const thisItemData = $(this).data("tab");
+    $(
+      `.section-offers .list-item__image .image[data-tab="${thisItemData}"]`
+    ).addClass("--active");
+  });
+
+  offerItems.on("mouseleave", function () {
+    const thisItemData = $(this).data("tab");
+    $(
+      `.section-offers .list-item__image .image[data-tab="${thisItemData}"]`
+    ).removeClass("--active");
+  });
 }
 function CTA() {
   if (document.querySelector(".cta").length < 1) return;
@@ -151,7 +222,7 @@ function CTA() {
       self.direction === 1
         ? document.querySelector(".cta").classList.add("hide")
         : document.querySelector(".cta").classList.remove("hide");
-    },
+    }
   });
 }
 const init = () => {
@@ -160,6 +231,8 @@ const init = () => {
   marquee();
   intro();
   CTA();
+  itemParallax();
+  sectionOffers();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body
