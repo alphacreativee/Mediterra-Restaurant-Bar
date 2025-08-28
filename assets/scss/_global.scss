@@ -77,6 +77,11 @@
 }
 .underline-hover {
   position: relative;
+  &.line-white {
+    &::before {
+      background-color: var(--color-white);
+    }
+  }
   &:hover {
     &::before {
       transform: scaleX(1);
