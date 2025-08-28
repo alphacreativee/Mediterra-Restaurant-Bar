@@ -141,7 +141,6 @@ function intro() {
     }
   );
 }
-
 function itemParallax() {
   if ($(".js-parallax").length < 1 && $(".image-parallax").length < 1) return;
 
@@ -213,12 +212,25 @@ function sectionOffers() {
     ).removeClass("--active");
   });
 }
-
+function CTA() {
+  if (document.querySelector(".cta").length < 1) return;
+  ScrollTrigger.create({
+    start: "top+=100vh top",
+    end: 99999,
+    paused: true,
+    onUpdate: (self) => {
+      self.direction === 1
+        ? document.querySelector(".cta").classList.add("hide")
+        : document.querySelector(".cta").classList.remove("hide");
+    }
+  });
+}
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
   marquee();
   intro();
+  CTA();
   itemParallax();
   sectionOffers();
 };

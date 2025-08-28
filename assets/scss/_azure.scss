@@ -1,0 +1,25 @@
+.azure {
+  width: 100%;
+  height: 100svh;
+  overflow: hidden;
+  &-inner {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  &-left {
+    display: flex;
+    align-items: center;
+    padding-right: 64px;
+    padding-left: 155px;
+  }
+  &-content {
+    h4 {
+      margin-bottom: 40px;
+    }
+    h3 {
+      margin-bottom: 6px;
+    }
+  }
+}

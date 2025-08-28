@@ -40,6 +40,16 @@
     </script>
     <div id="intro" class="intro"></div>
     <!-- end intro -->
+    <!-- cta  -->
+    <!-- end cta -->
+    <script>
+      fetch("./components/cta.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("cta").innerHTML = data;
+        });
+    </script>
+    <div id="cta" class="cta"></div>
     <!-- layout -->
     <!-- header -->
     <script>
@@ -202,6 +212,26 @@
               <div class="image" data-tab="3">
                 <img src="./assets/images/draf/offers-1.webp" alt="" />
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="azure">
+        <div class="azure-inner">
+          <div class="azure-left">
+            <div class="azure-content">
+              <h4 class="b2-font color-primary text-uppercase">Azure</h4>
+              <h3 class="h1-font font-hand color-primary">Private Room</h3>
+              <div class="description h2-font color-primary">
+                Perfect for business meetings,family gatherings, or romantic
+                dinners. At AZURE, enjoy tailored service and a refined culinary
+                journey.
+              </div>
+            </div>
+          </div>
+          <div class="azure-right">
+            <div class="azure-image">
+              <img src="./assets/images/draf/azure-bg.webp" alt="" />
             </div>
           </div>
         </div>
