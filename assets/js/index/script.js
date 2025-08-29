@@ -110,7 +110,7 @@ function marquee() {
     gsap.set(content, {
       x: 0,
       willChange: "transform",
-      force3D: true
+      force3D: true,
     });
 
     const tl = gsap.timeline({ repeat: -1 });
@@ -119,8 +119,8 @@ function marquee() {
       duration: fullWidth / speed,
       ease: "none",
       modifiers: {
-        x: (x) => `${parseFloat(x) % fullWidth}px`
-      }
+        x: (x) => `${parseFloat(x) % fullWidth}px`,
+      },
     });
 
     // Hover pause
@@ -135,7 +135,7 @@ function intro() {
   if (document.querySelector(".intro").length < 1) return;
 
   const tl = gsap.timeline({
-    defaults: { duration: 2, ease: "power2.inOut" }
+    defaults: { duration: 2, ease: "power2.inOut" },
   });
   // effect text banner
 
@@ -152,7 +152,7 @@ function intro() {
           {
             "will-change": "opacity, transform",
             opacity: 0,
-            y: 20
+            y: 20,
           },
           {
             opacity: 1,
@@ -161,7 +161,7 @@ function intro() {
             ease: "sine.out",
             onStart: () => {
               gsap.set(element, { opacity: 1 });
-            }
+            },
           },
           index * 0.1
         );
@@ -173,7 +173,7 @@ function intro() {
       elementsBlur.forEach((elementBlur, elementIndex) => {
         let splitBlur = SplitText.create(elementBlur, {
           type: "words, chars",
-          charsClass: "split-char"
+          charsClass: "split-char",
         });
 
         // Tính toán delay để chạy sau fade elements
@@ -188,7 +188,7 @@ function intro() {
             filter: "blur(5px)",
             y: 10,
             willChange: "filter, transform",
-            opacity: 0
+            opacity: 0,
           },
           {
             ease: "none",
@@ -199,7 +199,7 @@ function intro() {
             duration: 0.6,
             onStart: () => {
               gsap.set(elementBlur, { opacity: 1 });
-            }
+            },
           },
           startTime
         );
@@ -222,7 +222,7 @@ function intro() {
       clipPath: "inset(0% 0% 100% 0%)",
       onComplete: () => {
         document.querySelector(".intro").classList.add("d-none");
-      }
+      },
     }
   );
 }
@@ -246,9 +246,9 @@ function itemParallax() {
           end: "bottom top",
           scrub: 1,
           ease: "power4",
-          delay: 0.2
+          delay: 0.2,
           // markers: true
-        }
+        },
       }
     );
   });
@@ -267,8 +267,8 @@ function itemParallax() {
         trigger: section,
         start: "top 80%",
         end: "bottom top",
-        scrub: true
-      }
+        scrub: true,
+      },
     });
   });
 }
@@ -316,7 +316,7 @@ function bookingForm() {
         } catch (error) {
           console.error("Lỗi trong Lightpick onSelect:", error);
         }
-      }
+      },
     });
   }
 
@@ -396,7 +396,7 @@ function bookingForm() {
         fullname: fullname,
         phone: phone,
         email: email,
-        message: message
+        message: message,
       };
 
       formBooking.find("button[type='submit']").addClass("aloading");
@@ -446,7 +446,7 @@ function CTA() {
       self.direction === 1
         ? document.querySelector(".cta").classList.add("hide")
         : document.querySelector(".cta").classList.remove("hide");
-    }
+    },
   });
 }
 function hero() {
@@ -457,7 +457,7 @@ function hero() {
       speed: 1500,
       loop: true,
       autoplay: {
-        delay: 3000
+        delay: 3000,
       },
 
       on: {
@@ -488,8 +488,8 @@ function hero() {
               slideInner.style.transition = `${speed}ms ${easing}`;
             }
           });
-        }
-      }
+        },
+      },
     });
   });
 }
@@ -501,18 +501,18 @@ function effectText() {
       {
         "will-change": "opacity, transform",
         opacity: 0,
-        y: 20
+        y: 20,
       },
       {
         scrollTrigger: {
           trigger: element,
           start: "top 90%",
-          end: "bottom 90%"
+          end: "bottom 90%",
         },
         opacity: 1,
         y: 0,
         duration: 0.5,
-        ease: "sine.out"
+        ease: "sine.out",
       }
     );
   });
@@ -520,7 +520,7 @@ function effectText() {
   elementsBlur.forEach((elementBlur) => {
     let splitBlur = SplitText.create(elementBlur, {
       type: "words, chars",
-      charsClass: "split-char"
+      charsClass: "split-char",
     });
     gsap.fromTo(
       splitBlur.chars,
@@ -528,7 +528,7 @@ function effectText() {
         filter: "blur(5px) ",
         y: 10,
         willChange: "filter, transform",
-        opacity: 0
+        opacity: 0,
       },
       {
         ease: "none",
@@ -539,8 +539,8 @@ function effectText() {
 
         scrollTrigger: {
           trigger: elementBlur,
-          start: "top 80%"
-        }
+          start: "top 80%",
+        },
       }
     );
   });
@@ -550,13 +550,30 @@ function headerMobile() {
   const openMenu = document.querySelector(".header-hambuger.open");
   const closeMenu = document.querySelector(".header-hambuger.close");
   const headerOverlay = document.querySelector(".header-overlay");
+
+  const openSubMenuMobile = document.querySelector(
+    ".header-overlay-main > ul > li.menu-item-has-children > a"
+  );
+  const mainSubMenuMobile = document.querySelector(
+    ".header-overlay-main > ul > li.menu-item-has-children > .sub-menu"
+  );
+  const btnBack = document.querySelector(".header-overlay-main .menu-back");
   openMenu.addEventListener("click", () => {
     headerOverlay.classList.add("active");
   });
   closeMenu.addEventListener("click", () => {
     setTimeout(() => {
       headerOverlay.classList.remove("active");
+      mainSubMenuMobile.classList.remove("active");
     }, 300);
+  });
+  openSubMenuMobile.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log("click");
+    mainSubMenuMobile.classList.add("active");
+  });
+  btnBack.addEventListener("click", () => {
+    mainSubMenuMobile.classList.remove("active");
   });
 }
 const init = () => {

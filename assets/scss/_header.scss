@@ -16,7 +16,12 @@
       position: relative;
       cursor: pointer;
       transition: all 0.3s ease;
-
+      &::before {
+        content: "";
+        position: absolute;
+        inset: -20px;
+        background-color: transparent;
+      }
       &.close {
         span {
           background-color: var(--color-secondary);
@@ -282,7 +287,96 @@
     backdrop-filter: blur(10px);
     pointer-events: none;
     opacity: 0;
-
+    &-main {
+      width: 100%;
+      height: calc(100vh - 112px);
+      display: flex;
+      align-items: center;
+      padding-left: 40px;
+      position: relative;
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        & > li.menu-item-has-children > a {
+          position: relative;
+          padding-left: 17px;
+          &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 50%;
+            width: 5px;
+            height: 11px;
+            transform: translateY(-50%);
+            background-image: url("../../images/ic_arrow_left_yellow.svg");
+            background-size: contain;
+            background-repeat: no-repeat;
+          }
+        }
+        & > li.menu-item-has-children {
+          .sub-menu {
+            position: absolute;
+            background-color: var(--color-primary);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 16px 20px;
+            transition: transform 0.3s ease;
+            transform: translateX(-100%);
+            &.active {
+              transform: translateX(0);
+            }
+            ul {
+              padding-left: 20px;
+            }
+            .menu-back {
+              display: flex;
+              align-items: center;
+              gap: 10px;
+              width: max-content;
+              position: relative;
+              &::before {
+                content: "";
+                position: absolute;
+                inset: -15px;
+              }
+              p {
+                position: relative;
+                padding-left: 17px;
+                &::after {
+                  content: "";
+                  position: absolute;
+                  left: 0;
+                  top: 50%;
+                  width: 5px;
+                  height: 11px;
+                  transform: translateY(-50%);
+                  background-image: url("../../images/ic_arrow_left_yellow.svg");
+                  background-size: contain;
+                  background-repeat: no-repeat;
+                }
+              }
+            }
+            &-empty {
+              height: 22px;
+            }
+          }
+        }
+        li {
+          a {
+            &:hover {
+              color: var(--color-secondary);
+            }
+          }
+        }
+      }
+    }
     &.active {
       opacity: 1;
       pointer-events: auto;
@@ -304,6 +398,52 @@
     &-top {
       border-bottom: 1px solid var(--color-secondary);
       padding: 19.5px 20px;
+    }
+    &-bottom {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-top: 1px solid var(--color-secondary);
+      .book-table {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 16.5px 0;
+        width: 100%;
+        transition: background-color 0.3s ease;
+        &:hover {
+          background-color: var(--color-secondary);
+          .text {
+            color: var(--color-primary);
+          }
+          .icon {
+            img {
+              &:nth-child(2) {
+                opacity: 1;
+              }
+            }
+          }
+        }
+        .text {
+          transition: color 0.3s ease;
+        }
+        .icon {
+          position: relative;
+
+          img {
+            &:nth-child(2) {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              opacity: 0;
+              transition: all 0.3s ease;
+            }
+          }
+        }
+      }
     }
   }
 }
