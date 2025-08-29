@@ -295,145 +295,125 @@ function sectionOffers() {
   });
 }
 function bookingForm() {
-  if ($(".booking-form").length < 1) return;
+  if ($(".booking-form form").length < 1) return;
 
-  const formBooking = $(".booking-form form");
+  $(".booking-form form").each(function () {
+    const formBooking = $(this);
 
-  const dateField = formBooking.find("input[name='date']")[0];
-  if (dateField) {
-    new Lightpick({
-      field: dateField,
-      singleDate: true,
-      numberOfMonths: 1,
-      format: "DD/MM/YYYY",
-      minDate: moment(),
-      onSelect: function (start) {
-        try {
-          if (!start) return;
-
-          dateField.value = start.format("DD/MM/YYYY");
-          dateField.classList.remove("error");
-        } catch (error) {
-          console.error("Lỗi trong Lightpick onSelect:", error);
+    // Lightpick cho từng form
+    const dateField = formBooking.find("input[name='date']")[0];
+    if (dateField) {
+      new Lightpick({
+        field: dateField,
+        singleDate: true,
+        numberOfMonths: 1,
+        format: "DD/MM/YYYY",
+        minDate: moment(),
+        onSelect: function (start) {
+          if (start) {
+            dateField.value = start.format("DD/MM/YYYY");
+            dateField.classList.remove("error");
+          }
         }
+      });
+    }
+
+    // Submit từng form riêng
+    formBooking.on("submit", function (e) {
+      e.preventDefault();
+
+      let isValid = true;
+      formBooking.find(".field").removeClass("error"); // chỉ reset field trong form này
+
+      const date = formBooking.find("input[name='date']").val().trim();
+      if (!date) {
+        formBooking
+          .find("input[name='date']")
+          .closest(".field")
+          .addClass("error");
+        isValid = false;
       }
-    });
-  }
 
-  formBooking.on("submit", function (e) {
-    e.preventDefault();
+      const time = formBooking
+        .find(".dropdown-custom-btn[name='time'] .value-select span")
+        .text()
+        .trim();
+      if (!time || time === "Time") {
+        formBooking
+          .find(".dropdown-custom-btn[name='time']")
+          .closest(".field")
+          .addClass("error");
+        isValid = false;
+      }
 
-    var isValid = true;
+      const adult = formBooking.find("input[name='adult']").val().trim();
+      const child = formBooking.find("input[name='child']").val().trim() || "0";
+      if (!adult) {
+        formBooking
+          .find("input[name='adult']")
+          .closest(".field")
+          .addClass("error");
+        isValid = false;
+      }
 
-    $(this).find(".field").removeClass("error");
+      const fullname = formBooking.find("input[name='fullname']").val().trim();
+      if (!fullname) {
+        formBooking
+          .find("input[name='fullname']")
+          .closest(".field")
+          .addClass("error");
+        isValid = false;
+      }
 
-    var date = formBooking.find("input[name='date']").val();
-    if (date === "") {
-      formBooking
-        .find("input[name='date']")
-        .closest(".field")
-        .addClass("error");
-      isValid = false;
-    }
+      const email = formBooking.find("input[name='email']").val().trim();
+      if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+        formBooking
+          .find("input[name='email']")
+          .closest(".field")
+          .addClass("error");
+        isValid = false;
+      }
 
-    var time = formBooking
-      .find(".dropdown-custom-btn[name='time'] .value-select span")
-      .text()
-      .trim();
-    if (time === "" || time === "Time") {
-      formBooking
-        .find(".dropdown-custom-btn[name='time']")
-        .closest(".field")
-        .addClass("error");
-      isValid = false;
-    }
+      const phone = formBooking.find("input[name='phone']").val().trim();
+      if (!phone) {
+        formBooking
+          .find("input[name='phone']")
+          .closest(".field")
+          .addClass("error");
+        isValid = false;
+      }
 
-    var adult = formBooking.find("input[name='adult']").val().trim();
-    var child = formBooking.find("input[name='child']").val().trim()
-      ? formBooking.find("input[name='child']").val().trim()
-      : "0";
-    if (adult === "") {
-      formBooking
-        .find("input[name='adult']")
-        .closest(".field")
-        .addClass("error");
-      isValid = false;
-    }
+      const message = formBooking.find("textarea[name='message']").val().trim();
 
-    var fullname = formBooking.find("input[name='fullname']").val().trim();
-    if (fullname === "") {
-      formBooking
-        .find("input[name='fullname']")
-        .closest(".field")
-        .addClass("error");
-      isValid = false;
-    }
+      if (isValid) {
+        const formData = {
+          action: "submit_booking_form",
+          date,
+          time,
+          adult,
+          child,
+          fullname,
+          email,
+          phone,
+          message
+        };
 
-    var email = formBooking.find("input[name='email']").val().trim();
-    if (email === "" || !/^\S+@\S+\.\S+$/.test(email)) {
-      formBooking
-        .find("input[name='email']")
-        .closest(".field")
-        .addClass("error");
-      isValid = false;
-    }
-
-    var phone = formBooking.find("input[name='phone']").val().trim();
-    if (phone === "") {
-      formBooking
-        .find("input[name='phone']")
-        .closest(".field")
-        .addClass("error");
-      isValid = false;
-    }
-
-    var message = formBooking.find("textarea[name='message']").val().trim();
-
-    if (isValid) {
-      var formData = {
-        action: "submit_booking_form",
-        date: date,
-        fullname: fullname,
-        phone: phone,
-        email: email,
-        message: message
-      };
-
-      formBooking.find("button[type='submit']").addClass("aloading");
-      setTimeout(() => {
-        formBooking.find("button[type='submit']").removeClass("aloading");
-
-        formBooking.find(".message").show();
-        formBooking[0].reset();
+        formBooking.find("button[type='submit']").addClass("aloading");
 
         setTimeout(() => {
-          formBooking.find(".message").hide();
-        }, 10000);
-      }, 3000);
+          formBooking.find("button[type='submit']").removeClass("aloading");
+          formBooking[0].reset();
 
-      // $.ajax({
-      //   url: ajaxUrl,
-      //   method: "POST",
-      //   data: formData,
-      //   beforeSend: function () {
-      //     formBooking.find("button[type='submit']").addClass("aloading");
-      //   },
-      //   success: function (res) {
-      //     formBooking.find("button[type='submit']").removeClass("aloading");
+          formBooking.closest(".booking-form__inner").addClass("success");
 
-      //     formBooking.find(".message").show();
-      //     formBooking[0].reset();
+          setTimeout(() => {
+            formBooking.closest(".booking-form__inner").removeClass("success");
+          }, 10000);
+        }, 3000);
 
-      //     setTimeout(() => {
-      //       formBooking.find(".message").hide();
-      //     }, 10000);
-      //   },
-      //   error: function (xhr, status, error) {
-      //     console.error(xhr.responseText);
-      //     alert("Có lỗi xảy ra, vui lòng thử lại.");
-      //   }
-      // });
-    }
+        // $.ajax({...})
+      }
+    });
   });
 }
 function CTA() {

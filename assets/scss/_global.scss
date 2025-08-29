@@ -260,7 +260,267 @@
   border-radius: 50%;
   color: var(--color-white);
 }
+
 .effect-blur-auto,
 .data-fade-in-auto {
   opacity: 0;
+}
+
+// modal booking
+#modalBooking {
+  .modal-content {
+    background-color: var(--color-primary);
+  }
+
+  .modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn-close {
+    background: none;
+    opacity: 1;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: 40px;
+    top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    svg {
+      width: 25px;
+      height: 25px;
+    }
+  }
+}
+
+.booking-form {
+  width: max-content;
+  margin: auto;
+  padding: 40px 0;
+
+  &__inner {
+    padding: 40px 24px 24px;
+    position: relative;
+    z-index: 2;
+    width: 496px;
+    min-height: 643px;
+    height: auto;
+    background-color: var(--color-white);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .logo {
+      width: 45px;
+      height: 45px;
+      display: none;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .message {
+      margin: 24px auto 0;
+      width: calc(100% - 170px);
+      display: none;
+    }
+
+    &.success {
+      h2,
+      form {
+        display: none;
+      }
+
+      .logo,
+      .message {
+        display: block;
+      }
+    }
+  }
+
+  &__wrapper {
+    padding: 37px;
+    background-image: url("../../images/pattern.svg");
+    background-repeat: repeat;
+    background-size: auto;
+    position: relative;
+    z-index: 2;
+  }
+
+  form {
+    margin-top: 40px;
+  }
+
+  .field {
+    width: 100%;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 500;
+    color: var(--color-primary);
+    border: 1px solid rgba($color: #174b9c, $alpha: 0.3);
+    border-bottom: unset;
+
+    &.error {
+      input,
+      textarea {
+        &::placeholder {
+          color: red;
+        }
+      }
+
+      .dropdown-custom-btn {
+        span {
+          color: red;
+        }
+      }
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 18px 16px;
+      height: 58px;
+      border: none;
+      color: var(--color-primary);
+
+      &::placeholder {
+        color: var(--color-primary);
+        font-weight: 500;
+      }
+
+      &[type="number"] {
+        -moz-appearance: textfield;
+
+        &::-webkit-inner-spin-button,
+        &::-webkit-outer-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+      }
+    }
+
+    textarea {
+      height: 128px;
+      resize: none;
+      overflow: auto;
+    }
+
+    &:has([name="date"]) {
+      position: relative;
+
+      &::after {
+        content: "";
+        width: 12px;
+        height: 12px;
+        position: absolute;
+        top: 50%;
+        right: 16px;
+        transform: translateY(-50%);
+        background-image: url("../../images/ic_calender.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }
+
+    .dropdown-custom {
+      height: 100%;
+      width: 100%;
+      padding: 18px 16px;
+
+      &-btn {
+        justify-content: space-between;
+
+        .icon {
+          width: 12px;
+          height: 12px;
+        }
+
+        span {
+          font-weight: 500;
+        }
+      }
+
+      &-menu {
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        border: 1px solid rgba($color: #174b9c, $alpha: 0.3);
+
+        span {
+          font-weight: 500;
+        }
+      }
+    }
+
+    &-group {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      .field:first-child {
+        border-right: unset;
+      }
+    }
+  }
+
+  button {
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 600;
+    text-align: center;
+    color: var(--color-primary);
+    height: 44px;
+    border: 1px solid rgba($color: #174b9c, $alpha: 0.3);
+    width: 100%;
+    transition: all 0.4s ease;
+
+    &.aloading {
+      pointer-events: none;
+      color: transparent;
+      background-color: var(--color-primary);
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        z-index: 3;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 2px solid transparent;
+        border-radius: 50%;
+        border-top: 2px solid var(--color-white);
+        border-right: 2px solid var(--color-white);
+        width: 20px;
+        height: 20px;
+        animation: spin-animation 1s linear infinite;
+        z-index: 2;
+        background: 0 0;
+      }
+
+      @keyframes spin-animation {
+        0% {
+          transform: translate(-50%, -50%) rotate(0);
+        }
+        100% {
+          transform: translate(-50%, -50%) rotate(360deg);
+        }
+      }
+    }
+
+    &:hover {
+      color: var(--color-white);
+      background-color: var(--color-primary);
+    }
+  }
 }
