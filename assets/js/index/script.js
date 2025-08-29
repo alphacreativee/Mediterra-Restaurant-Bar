@@ -107,7 +107,7 @@ function marquee() {
     gsap.set(content, {
       x: 0,
       willChange: "transform",
-      force3D: true
+      force3D: true,
     });
 
     const tl = gsap.timeline({ repeat: -1 });
@@ -116,8 +116,8 @@ function marquee() {
       duration: fullWidth / speed,
       ease: "none",
       modifiers: {
-        x: (x) => `${parseFloat(x) % fullWidth}px`
-      }
+        x: (x) => `${parseFloat(x) % fullWidth}px`,
+      },
     });
 
     // Hover pause
@@ -132,9 +132,60 @@ function intro() {
   if (document.querySelector(".intro").length < 1) return;
 
   const tl = gsap.timeline({
-    defaults: { duration: 2, ease: "power2.inOut" }
+    defaults: { duration: 2, ease: "power2.inOut" },
   });
+  // effect text banner
+  gsap.delayedCall(1, () => {
+    gsap.registerPlugin(ScrollTrigger, SplitText);
+    gsap.utils.toArray(".data-fade-in-auto").forEach((element) => {
+      gsap.fromTo(
+        element,
+        {
+          "will-change": "opacity, transform",
+          opacity: 0,
+          y: 20,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "sine.out",
+          onStart: () => {
+            gsap.set(element, { opacity: 1 });
+          },
+        }
+      );
+    });
 
+    const elementsBlur = document.querySelectorAll(".effect-blur-auto");
+
+    elementsBlur.forEach((elementBlur) => {
+      let splitBlur = SplitText.create(elementBlur, {
+        type: "words, chars",
+        charsClass: "split-char",
+      });
+      gsap.fromTo(
+        splitBlur.chars,
+        {
+          filter: "blur(5px) ",
+          y: 10,
+          willChange: "filter, transform",
+          opacity: 0,
+        },
+        {
+          ease: "none",
+          filter: "blur(0px)",
+          y: 0,
+          stagger: 0.025,
+          opacity: 1,
+          onStart: () => {
+            gsap.set(elementBlur, { opacity: 1 });
+          },
+        }
+      );
+    });
+  });
+  // effect text auto banner
   tl.fromTo(
     ".intro",
     { clipPath: "inset(0% 0% 0% 0%)" },
@@ -142,7 +193,7 @@ function intro() {
       clipPath: "inset(0% 0% 100% 0%)",
       onComplete: () => {
         document.querySelector(".intro").classList.add("d-none");
-      }
+      },
     }
   );
 }
@@ -166,9 +217,9 @@ function itemParallax() {
           end: "bottom top",
           scrub: 1,
           ease: "power4",
-          delay: 0.2
+          delay: 0.2,
           // markers: true
-        }
+        },
       }
     );
   });
@@ -187,8 +238,8 @@ function itemParallax() {
         trigger: section,
         start: "top 80%",
         end: "bottom top",
-        scrub: true
-      }
+        scrub: true,
+      },
     });
   });
 }
@@ -225,7 +276,7 @@ function CTA() {
       self.direction === 1
         ? document.querySelector(".cta").classList.add("hide")
         : document.querySelector(".cta").classList.remove("hide");
-    }
+    },
   });
 }
 function hero() {
@@ -236,14 +287,14 @@ function hero() {
       speed: 1500,
       loop: true,
       autoplay: {
-        delay: 3000
+        delay: 3000,
       },
 
       on: {
         progress(swiper) {
           swiper.slides.forEach((slide) => {
             const slideProgress = slide.progress || 0;
-            const innerOffset = swiper.width * 0.9;
+            const innerOffset = swiper.width * 0.95;
             const innerTranslate = slideProgress * innerOffset;
 
             const slideInner = slide.querySelector(".hero-box");
@@ -259,6 +310,7 @@ function hero() {
         },
         setTransition(swiper, speed) {
           const easing = "cubic-bezier(0.25, 0.1, 0.25, 1)";
+
           swiper.slides.forEach((slide) => {
             slide.style.transition = `${speed}ms ${easing}`;
             const slideInner = slide.querySelector(".hero-box");
@@ -266,18 +318,39 @@ function hero() {
               slideInner.style.transition = `${speed}ms ${easing}`;
             }
           });
-        }
-      }
+        },
+      },
     });
   });
 }
 function effectText() {
   gsap.registerPlugin(ScrollTrigger, SplitText);
+  gsap.utils.toArray(".data-fade-in").forEach((element) => {
+    gsap.fromTo(
+      element,
+      {
+        "will-change": "opacity, transform",
+        opacity: 0,
+        y: 20,
+      },
+      {
+        scrollTrigger: {
+          trigger: element,
+          start: "top 90%",
+          end: "bottom 90%",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        ease: "sine.out",
+      }
+    );
+  });
   const elementsBlur = document.querySelectorAll(".effect-blur");
   elementsBlur.forEach((elementBlur) => {
     let splitBlur = SplitText.create(elementBlur, {
       type: "words, chars",
-      charsClass: "split-char"
+      charsClass: "split-char",
     });
     gsap.fromTo(
       splitBlur.chars,
@@ -285,18 +358,19 @@ function effectText() {
         filter: "blur(5px) ",
         y: 10,
         willChange: "filter, transform",
-        opacity: 0
+        opacity: 0,
       },
       {
         ease: "none",
         filter: "blur(0px)",
         y: 0,
-        stagger: 0.025,
+        stagger: 0.005,
         opacity: 1,
+
         scrollTrigger: {
           trigger: elementBlur,
-          start: "top 90%"
-        }
+          start: "top 80%",
+        },
       }
     );
   });
