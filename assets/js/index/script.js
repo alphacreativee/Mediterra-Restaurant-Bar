@@ -401,6 +401,20 @@ function effectText() {
     );
   });
 }
+function headerMobile() {
+  if (window.innerWidth > 991) return;
+  const openMenu = document.querySelector(".header-hambuger.open");
+  const closeMenu = document.querySelector(".header-hambuger.close");
+  const headerOverlay = document.querySelector(".header-overlay");
+  openMenu.addEventListener("click", () => {
+    headerOverlay.classList.add("active");
+  });
+  closeMenu.addEventListener("click", () => {
+    setTimeout(() => {
+      headerOverlay.classList.remove("active");
+    }, 300);
+  });
+}
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
@@ -411,6 +425,7 @@ const init = () => {
   sectionOffers();
   hero();
   effectText();
+  headerMobile();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body
