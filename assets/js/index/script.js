@@ -595,7 +595,6 @@ const init = () => {
   hero();
   effectText();
   headerMobile();
-  sectionAbout();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body

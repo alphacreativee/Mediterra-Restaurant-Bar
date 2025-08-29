@@ -1,5 +1,10 @@
 .section-offers {
   padding: 40px;
+  position: relative;
+
+  @media (max-width: 991px) {
+    padding: 40px 0;
+  }
 
   .offers {
     &-background {
@@ -20,10 +25,15 @@
       position: relative;
       width: 100%;
       height: 100vh;
+
+      @media (max-width: 991px) {
+        height: 700px;
+      }
     }
 
     &-box {
       width: 550px;
+      max-width: 100%;
       height: auto;
       // max-height: calc(100vh - 160px);
       padding: 64px;
@@ -32,6 +42,12 @@
       left: 115px;
       top: 50%;
       transform: translateY(-50%);
+
+      @media (max-width: 991px) {
+        width: calc(100% - 32px);
+        left: 16px;
+        padding: 40px;
+      }
 
       .desc {
         margin-top: 6px;
