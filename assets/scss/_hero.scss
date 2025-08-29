@@ -34,6 +34,13 @@
       transform: translateX(-50%);
       z-index: 3;
       text-align: center;
+      @media (max-width: 991px) {
+        font-size: 24px;
+        line-height: 32px;
+        max-width: 300px;
+        width: 100%;
+        bottom: 94px;
+      }
     }
     &-title {
       position: absolute;
@@ -42,6 +49,11 @@
       transform: translateX(-50%);
       text-align: center;
       z-index: 5;
+      @media (max-width: 991px) {
+        max-width: 300px;
+        width: 100%;
+        bottom: 40px;
+      }
     }
   }
   &-box {
@@ -52,5 +64,9 @@
       height: 100%;
       object-fit: cover;
     }
+  }
+  .swiper-hero {
+    width: 100%;
+    height: 100%;
   }
 }

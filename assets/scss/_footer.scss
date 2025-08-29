@@ -1,6 +1,9 @@
 #footer {
   padding: 40px 40px 0;
   background-color: var(--color-primary);
+  @media (max-width: 991px) {
+    padding: 16px 16px 0;
+  }
 }
 .footer {
   &-container {
@@ -14,6 +17,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (max-width: 991px) {
+      height: 340px;
+    }
   }
   &-box {
     background-color: var(--color-primary);
@@ -23,15 +29,28 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    @media (max-width: 991px) {
+      width: 245px;
+      aspect-ratio: 1;
+      padding: 40px 30px 16px;
+      gap: 30px;
+    }
     img {
       width: 100%;
       height: 140px;
+      @media (max-width: 991px) {
+        height: 110px;
+      }
     }
   }
   &-info {
     border-top: 1px solid var(--color-secondary);
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    @media (max-width: 991px) {
+      grid-template-columns: 1fr;
+      border-left: none;
+    }
   }
   &-col {
     display: flex;
@@ -40,6 +59,15 @@
     border-left: 1px solid var(--color-secondary);
     padding: 20px 30px;
     text-align: center;
+    @media (max-width: 991px) {
+      border-top: 1px solid var(--color-secondary);
+      border-left: none;
+      height: 68px;
+      padding: 12px 30px;
+      &:nth-child(1) {
+        border-top: none;
+      }
+    }
     .social {
       display: flex;
       align-items: center;
@@ -84,6 +112,11 @@
     grid-template-columns: 1fr 1fr 1fr;
     align-items: center;
     padding: 24px 0;
+    @media (max-width: 767px) {
+      grid-template-columns: 1fr;
+      text-align: center;
+      gap: 16px;
+    }
     &-col {
       a {
         &:hover {
@@ -97,6 +130,10 @@
       }
       &:nth-child(3) {
         text-align: right;
+        @media (max-width: 991px) {
+          text-align: center;
+          grid-row: 1 / 2;
+        }
       }
     }
   }

@@ -525,6 +525,37 @@ function effectText() {
     );
   });
 }
+function headerMobile() {
+  if (window.innerWidth > 991) return;
+  const openMenu = document.querySelector(".header-hambuger.open");
+  const closeMenu = document.querySelector(".header-hambuger.close");
+  const headerOverlay = document.querySelector(".header-overlay");
+
+  const openSubMenuMobile = document.querySelector(
+    ".header-overlay-main > ul > li.menu-item-has-children > a"
+  );
+  const mainSubMenuMobile = document.querySelector(
+    ".header-overlay-main > ul > li.menu-item-has-children > .sub-menu"
+  );
+  const btnBack = document.querySelector(".header-overlay-main .menu-back");
+  openMenu.addEventListener("click", () => {
+    headerOverlay.classList.add("active");
+  });
+  closeMenu.addEventListener("click", () => {
+    setTimeout(() => {
+      headerOverlay.classList.remove("active");
+      mainSubMenuMobile.classList.remove("active");
+    }, 300);
+  });
+  openSubMenuMobile.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log("click");
+    mainSubMenuMobile.classList.add("active");
+  });
+  btnBack.addEventListener("click", () => {
+    mainSubMenuMobile.classList.remove("active");
+  });
+}
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
@@ -536,6 +567,7 @@ const init = () => {
   bookingForm();
   hero();
   effectText();
+  headerMobile();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body
