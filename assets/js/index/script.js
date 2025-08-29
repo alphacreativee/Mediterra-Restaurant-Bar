@@ -226,8 +226,13 @@ function intro() {
     }
   );
 }
-function itemParallax() {
-  if ($(".js-parallax").length < 1 && $(".image-parallax").length < 1) return;
+function itemEffect() {
+  if (
+    $(".js-parallax").length < 1 &&
+    $(".image-parallax").length < 1 &&
+    $(".image-fade-in").length < 1
+  )
+    return;
 
   gsap.utils.toArray(".js-parallax").forEach((wrap) => {
     const y = parseFloat(wrap.getAttribute("data-y")) || 100;
@@ -270,6 +275,28 @@ function itemParallax() {
         scrub: true
       }
     });
+  });
+
+  gsap.utils.toArray(".image-fade-in").forEach((element) => {
+    gsap.fromTo(
+      element,
+      {
+        "will-change": "opacity, transform",
+        opacity: 0,
+        y: 40
+      },
+      {
+        scrollTrigger: {
+          trigger: element,
+          start: "top 90%",
+          end: "bottom 90%"
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.7,
+        ease: "sine.out"
+      }
+    );
   });
 }
 function sectionOffers() {
@@ -562,12 +589,13 @@ const init = () => {
   marquee();
   intro();
   CTA();
-  itemParallax();
+  itemEffect();
   sectionOffers();
   bookingForm();
   hero();
   effectText();
   headerMobile();
+  sectionAbout();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body
