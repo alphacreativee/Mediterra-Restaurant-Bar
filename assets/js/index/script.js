@@ -62,7 +62,10 @@ function customDropdown() {
 
     // Close dropdown on scroll
     window.addEventListener("scroll", function () {
-      closeAllDropdowns();
+      if (dropdownMenu.closest(".header-lang")) {
+        dropdownMenu.classList.remove("dropdown--active");
+        btnDropdown.classList.remove("--active");
+      }
     });
   });
 
@@ -192,7 +195,6 @@ function itemParallax() {
     });
   });
 }
-
 function sectionOffers() {
   if ($(".section-offers").length < 1) return;
 
@@ -213,6 +215,148 @@ function sectionOffers() {
     $(
       `.section-offers .list-item__image .image[data-tab="${thisItemData}"]`
     ).removeClass("--active");
+  });
+}
+function bookingForm() {
+  if ($(".booking-form").length < 1) return;
+
+  const formBooking = $(".booking-form form");
+
+  const dateField = formBooking.find("input[name='date']")[0];
+  if (dateField) {
+    new Lightpick({
+      field: dateField,
+      singleDate: true,
+      numberOfMonths: 1,
+      format: "DD/MM/YYYY",
+      minDate: moment(),
+      onSelect: function (start) {
+        try {
+          if (!start) return;
+
+          dateField.value = start.format("DD/MM/YYYY");
+          dateField.classList.remove("error");
+        } catch (error) {
+          console.error("Lỗi trong Lightpick onSelect:", error);
+        }
+      }
+    });
+  }
+
+  formBooking.on("submit", function (e) {
+    e.preventDefault();
+
+    var isValid = true;
+
+    $(this).find(".field").removeClass("error");
+
+    var date = formBooking.find("input[name='date']").val();
+    if (date === "") {
+      formBooking
+        .find("input[name='date']")
+        .closest(".field")
+        .addClass("error");
+      isValid = false;
+    }
+
+    var time = formBooking
+      .find(".dropdown-custom-btn[name='time'] .value-select span")
+      .text()
+      .trim();
+    if (time === "" || time === "Time") {
+      formBooking
+        .find(".dropdown-custom-btn[name='time']")
+        .closest(".field")
+        .addClass("error");
+      isValid = false;
+    }
+
+    var adult = formBooking.find("input[name='adult']").val().trim();
+    var child = formBooking.find("input[name='child']").val().trim()
+      ? formBooking.find("input[name='child']").val().trim()
+      : "0";
+    if (adult === "") {
+      formBooking
+        .find("input[name='adult']")
+        .closest(".field")
+        .addClass("error");
+      isValid = false;
+    }
+
+    var fullname = formBooking.find("input[name='fullname']").val().trim();
+    if (fullname === "") {
+      formBooking
+        .find("input[name='fullname']")
+        .closest(".field")
+        .addClass("error");
+      isValid = false;
+    }
+
+    var email = formBooking.find("input[name='email']").val().trim();
+    if (email === "" || !/^\S+@\S+\.\S+$/.test(email)) {
+      formBooking
+        .find("input[name='email']")
+        .closest(".field")
+        .addClass("error");
+      isValid = false;
+    }
+
+    var phone = formBooking.find("input[name='phone']").val().trim();
+    if (phone === "") {
+      formBooking
+        .find("input[name='phone']")
+        .closest(".field")
+        .addClass("error");
+      isValid = false;
+    }
+
+    var message = formBooking.find("textarea[name='message']").val().trim();
+
+    if (isValid) {
+      var formData = {
+        action: "submit_booking_form",
+        date: date,
+        fullname: fullname,
+        phone: phone,
+        email: email,
+        message: message
+      };
+
+      formBooking.find("button[type='submit']").addClass("aloading");
+      setTimeout(() => {
+        formBooking.find("button[type='submit']").removeClass("aloading");
+
+        formBooking.find(".message").show();
+        formBooking[0].reset();
+
+        setTimeout(() => {
+          formBooking.find(".message").hide();
+        }, 10000);
+      }, 3000);
+
+      // $.ajax({
+      //   url: ajaxUrl,
+      //   method: "POST",
+      //   data: formData,
+      //   beforeSend: function () {
+      //     formBooking.find("button[type='submit']").addClass("aloading");
+      //   },
+      //   success: function (res) {
+      //     formBooking.find("button[type='submit']").removeClass("aloading");
+
+      //     formBooking.find(".message").show();
+      //     formBooking[0].reset();
+
+      //     setTimeout(() => {
+      //       formBooking.find(".message").hide();
+      //     }, 10000);
+      //   },
+      //   error: function (xhr, status, error) {
+      //     console.error(xhr.responseText);
+      //     alert("Có lỗi xảy ra, vui lòng thử lại.");
+      //   }
+      // });
+    }
   });
 }
 function CTA() {
@@ -309,6 +453,7 @@ const init = () => {
   CTA();
   itemParallax();
   sectionOffers();
+  bookingForm();
   hero();
   effectText();
 };

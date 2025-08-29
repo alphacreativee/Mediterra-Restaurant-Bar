@@ -133,7 +133,7 @@
     gap: 10px;
     span {
       color: var(--color-primary);
-      font-size: 14px;
+      font-size: 16px;
       line-height: 22px;
       font-weight: 600;
     }
@@ -150,8 +150,113 @@
   }
   span {
     color: var(--color-primary);
-    font-size: 14px;
+    font-size: 16px;
     line-height: 22px;
     font-weight: 600;
   }
+}
+
+.lightpick {
+  box-shadow: unset;
+  padding: 0;
+  color: var(--color-primary);
+  background-color: var(--color-white);
+  border-radius: unset;
+  border: 1px solid rgba($color: #174b9c, $alpha: 0.3);
+  overflow: hidden;
+}
+
+.lightpick__day.is-today {
+  color: var(--color-primary);
+  font-weight: bold;
+  background-image: none;
+}
+
+.lightpick__day.is-in-range:hover {
+  background-image: none;
+  background-color: var(--color-primary);
+}
+
+.lightpick__day:not(.is-disabled):hover,
+.lightpick__day.is-start-date.is-end-date {
+  background-image: none;
+}
+
+.lightpick__day.is-in-range {
+  background-color: rgba(132, 22, 26, 0.8);
+  color: #fff;
+}
+
+.lightpick__month {
+  padding: 10px;
+  padding-left: 0;
+  width: 267px;
+}
+
+.lightpick__day-of-the-week,
+.lightpick__month-title > .lightpick__select-months,
+.lightpick__month-title > .lightpick__select {
+  color: var(--color-primary);
+}
+
+.lightpick__day.is-end-date.is-in-range.is-flipped,
+.lightpick__day.is-start-date.is-in-range,
+.lightpick__day.is-end-date.is-in-range,
+.lightpick__day.is-start-date.is-in-range.is-flipped {
+  background-color: var(--color-primary);
+}
+
+.lightpick__month-title {
+  padding: 0;
+  margin-left: 8px;
+}
+.lightpick__month-title > .lightpick__select-months,
+.lightpick__day-of-the-week {
+  text-align: left;
+}
+.lightpick__toolbar {
+  display: flex;
+  gap: 5px;
+  padding: 10px 0;
+  background-color: var(--color-white);
+  @media (max-width: 991px) {
+    padding-right: 8px;
+  }
+}
+.lightpick__next-action,
+.lightpick__previous-action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0;
+  background-image: url("../../images/ic-arrow-calendar-right.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 20px 10px;
+  background-color: var(--color-primary);
+  margin: 0;
+}
+.lightpick__previous-action {
+  transform: scaleX(-1);
+}
+
+.lightpick__day.is-available {
+  transition: all 0.3s ease;
+  border-radius: 50%;
+}
+
+.lightpick__day {
+  height: auto;
+  aspect-ratio: 1;
+}
+
+.lightpick__day.is-end-date,
+.lightpick__day.is-end-date:hover,
+.lightpick__day.is-start-date,
+.lightpick__day.is-start-date:hover,
+.lightpick__day.is-available:hover {
+  background-color: var(--color-primary);
+  background-image: unset;
+  border-radius: 50%;
+  color: var(--color-white);
 }
