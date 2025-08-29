@@ -62,7 +62,10 @@ function customDropdown() {
 
     // Close dropdown on scroll
     window.addEventListener("scroll", function () {
-      closeAllDropdowns();
+      if (dropdownMenu.closest(".header-lang")) {
+        dropdownMenu.classList.remove("dropdown--active");
+        btnDropdown.classList.remove("--active");
+      }
     });
   });
 
@@ -107,7 +110,7 @@ function marquee() {
     gsap.set(content, {
       x: 0,
       willChange: "transform",
-      force3D: true,
+      force3D: true
     });
 
     const tl = gsap.timeline({ repeat: -1 });
@@ -116,8 +119,8 @@ function marquee() {
       duration: fullWidth / speed,
       ease: "none",
       modifiers: {
-        x: (x) => `${parseFloat(x) % fullWidth}px`,
-      },
+        x: (x) => `${parseFloat(x) % fullWidth}px`
+      }
     });
 
     // Hover pause
@@ -132,7 +135,7 @@ function intro() {
   if (document.querySelector(".intro").length < 1) return;
 
   const tl = gsap.timeline({
-    defaults: { duration: 2, ease: "power2.inOut" },
+    defaults: { duration: 2, ease: "power2.inOut" }
   });
   // effect text banner
 
@@ -149,7 +152,7 @@ function intro() {
           {
             "will-change": "opacity, transform",
             opacity: 0,
-            y: 20,
+            y: 20
           },
           {
             opacity: 1,
@@ -158,7 +161,7 @@ function intro() {
             ease: "sine.out",
             onStart: () => {
               gsap.set(element, { opacity: 1 });
-            },
+            }
           },
           index * 0.1
         );
@@ -170,7 +173,7 @@ function intro() {
       elementsBlur.forEach((elementBlur, elementIndex) => {
         let splitBlur = SplitText.create(elementBlur, {
           type: "words, chars",
-          charsClass: "split-char",
+          charsClass: "split-char"
         });
 
         // Tính toán delay để chạy sau fade elements
@@ -185,7 +188,7 @@ function intro() {
             filter: "blur(5px)",
             y: 10,
             willChange: "filter, transform",
-            opacity: 0,
+            opacity: 0
           },
           {
             ease: "none",
@@ -196,7 +199,7 @@ function intro() {
             duration: 0.6,
             onStart: () => {
               gsap.set(elementBlur, { opacity: 1 });
-            },
+            }
           },
           startTime
         );
@@ -219,7 +222,7 @@ function intro() {
       clipPath: "inset(0% 0% 100% 0%)",
       onComplete: () => {
         document.querySelector(".intro").classList.add("d-none");
-      },
+      }
     }
   );
 }
@@ -243,9 +246,9 @@ function itemParallax() {
           end: "bottom top",
           scrub: 1,
           ease: "power4",
-          delay: 0.2,
+          delay: 0.2
           // markers: true
-        },
+        }
       }
     );
   });
@@ -264,12 +267,11 @@ function itemParallax() {
         trigger: section,
         start: "top 80%",
         end: "bottom top",
-        scrub: true,
-      },
+        scrub: true
+      }
     });
   });
 }
-
 function sectionOffers() {
   if ($(".section-offers").length < 1) return;
 
@@ -292,6 +294,148 @@ function sectionOffers() {
     ).removeClass("--active");
   });
 }
+function bookingForm() {
+  if ($(".booking-form").length < 1) return;
+
+  const formBooking = $(".booking-form form");
+
+  const dateField = formBooking.find("input[name='date']")[0];
+  if (dateField) {
+    new Lightpick({
+      field: dateField,
+      singleDate: true,
+      numberOfMonths: 1,
+      format: "DD/MM/YYYY",
+      minDate: moment(),
+      onSelect: function (start) {
+        try {
+          if (!start) return;
+
+          dateField.value = start.format("DD/MM/YYYY");
+          dateField.classList.remove("error");
+        } catch (error) {
+          console.error("Lỗi trong Lightpick onSelect:", error);
+        }
+      }
+    });
+  }
+
+  formBooking.on("submit", function (e) {
+    e.preventDefault();
+
+    var isValid = true;
+
+    $(this).find(".field").removeClass("error");
+
+    var date = formBooking.find("input[name='date']").val();
+    if (date === "") {
+      formBooking
+        .find("input[name='date']")
+        .closest(".field")
+        .addClass("error");
+      isValid = false;
+    }
+
+    var time = formBooking
+      .find(".dropdown-custom-btn[name='time'] .value-select span")
+      .text()
+      .trim();
+    if (time === "" || time === "Time") {
+      formBooking
+        .find(".dropdown-custom-btn[name='time']")
+        .closest(".field")
+        .addClass("error");
+      isValid = false;
+    }
+
+    var adult = formBooking.find("input[name='adult']").val().trim();
+    var child = formBooking.find("input[name='child']").val().trim()
+      ? formBooking.find("input[name='child']").val().trim()
+      : "0";
+    if (adult === "") {
+      formBooking
+        .find("input[name='adult']")
+        .closest(".field")
+        .addClass("error");
+      isValid = false;
+    }
+
+    var fullname = formBooking.find("input[name='fullname']").val().trim();
+    if (fullname === "") {
+      formBooking
+        .find("input[name='fullname']")
+        .closest(".field")
+        .addClass("error");
+      isValid = false;
+    }
+
+    var email = formBooking.find("input[name='email']").val().trim();
+    if (email === "" || !/^\S+@\S+\.\S+$/.test(email)) {
+      formBooking
+        .find("input[name='email']")
+        .closest(".field")
+        .addClass("error");
+      isValid = false;
+    }
+
+    var phone = formBooking.find("input[name='phone']").val().trim();
+    if (phone === "") {
+      formBooking
+        .find("input[name='phone']")
+        .closest(".field")
+        .addClass("error");
+      isValid = false;
+    }
+
+    var message = formBooking.find("textarea[name='message']").val().trim();
+
+    if (isValid) {
+      var formData = {
+        action: "submit_booking_form",
+        date: date,
+        fullname: fullname,
+        phone: phone,
+        email: email,
+        message: message
+      };
+
+      formBooking.find("button[type='submit']").addClass("aloading");
+      setTimeout(() => {
+        formBooking.find("button[type='submit']").removeClass("aloading");
+
+        formBooking.find(".message").show();
+        formBooking[0].reset();
+
+        setTimeout(() => {
+          formBooking.find(".message").hide();
+        }, 10000);
+      }, 3000);
+
+      // $.ajax({
+      //   url: ajaxUrl,
+      //   method: "POST",
+      //   data: formData,
+      //   beforeSend: function () {
+      //     formBooking.find("button[type='submit']").addClass("aloading");
+      //   },
+      //   success: function (res) {
+      //     formBooking.find("button[type='submit']").removeClass("aloading");
+
+      //     formBooking.find(".message").show();
+      //     formBooking[0].reset();
+
+      //     setTimeout(() => {
+      //       formBooking.find(".message").hide();
+      //     }, 10000);
+      //   },
+      //   error: function (xhr, status, error) {
+      //     console.error(xhr.responseText);
+      //     alert("Có lỗi xảy ra, vui lòng thử lại.");
+      //   }
+      // });
+    }
+  });
+}
 function CTA() {
   if (document.querySelector(".cta").length < 1) return;
   ScrollTrigger.create({
@@ -302,7 +446,7 @@ function CTA() {
       self.direction === 1
         ? document.querySelector(".cta").classList.add("hide")
         : document.querySelector(".cta").classList.remove("hide");
-    },
+    }
   });
 }
 function hero() {
@@ -313,7 +457,7 @@ function hero() {
       speed: 1500,
       loop: true,
       autoplay: {
-        delay: 3000,
+        delay: 3000
       },
 
       on: {
@@ -344,8 +488,8 @@ function hero() {
               slideInner.style.transition = `${speed}ms ${easing}`;
             }
           });
-        },
-      },
+        }
+      }
     });
   });
 }
@@ -357,18 +501,18 @@ function effectText() {
       {
         "will-change": "opacity, transform",
         opacity: 0,
-        y: 20,
+        y: 20
       },
       {
         scrollTrigger: {
           trigger: element,
           start: "top 90%",
-          end: "bottom 90%",
+          end: "bottom 90%"
         },
         opacity: 1,
         y: 0,
         duration: 0.5,
-        ease: "sine.out",
+        ease: "sine.out"
       }
     );
   });
@@ -376,7 +520,7 @@ function effectText() {
   elementsBlur.forEach((elementBlur) => {
     let splitBlur = SplitText.create(elementBlur, {
       type: "words, chars",
-      charsClass: "split-char",
+      charsClass: "split-char"
     });
     gsap.fromTo(
       splitBlur.chars,
@@ -384,7 +528,7 @@ function effectText() {
         filter: "blur(5px) ",
         y: 10,
         willChange: "filter, transform",
-        opacity: 0,
+        opacity: 0
       },
       {
         ease: "none",
@@ -395,8 +539,8 @@ function effectText() {
 
         scrollTrigger: {
           trigger: elementBlur,
-          start: "top 80%",
-        },
+          start: "top 80%"
+        }
       }
     );
   });
@@ -423,6 +567,7 @@ const init = () => {
   CTA();
   itemParallax();
   sectionOffers();
+  bookingForm();
   hero();
   effectText();
   headerMobile();
