@@ -168,6 +168,7 @@
             clip-path: inset(0 0 100% 0);
             will-change: clip-path;
             transition: clip-path 0.3s ease;
+
             & > ul {
               display: flex;
               flex-direction: column;
@@ -235,6 +236,10 @@
       will-change: clip-path;
       transition: clip-path 0.3s ease;
       pointer-events: none;
+      @media (max-width: 991px) {
+        bottom: -17px;
+        width: 110px;
+      }
       &.dropdown--active {
         clip-path: inset(0 0 0 0);
         pointer-events: auto;
