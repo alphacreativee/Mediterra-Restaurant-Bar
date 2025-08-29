@@ -238,7 +238,7 @@
       pointer-events: none;
       @media (max-width: 991px) {
         bottom: -17px;
-        width: 110px;
+        width: 90px;
       }
       &.dropdown--active {
         clip-path: inset(0 0 0 0);
@@ -287,7 +287,7 @@
     z-index: 500;
     display: grid;
     grid-template-columns: auto 64px;
-    transition: opacity 0.7s ease, pointer-events 0s 0.7s;
+    transition: opacity 0.5s ease, pointer-events 0s 0.5s;
     background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
     pointer-events: none;
@@ -392,7 +392,7 @@
       background-color: var(--color-primary);
       transform: translateX(-100%);
       opacity: 0;
-      transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
+      transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
     }
 
     &.active &-inner {

@@ -572,7 +572,7 @@ function headerMobile() {
     setTimeout(() => {
       headerOverlay.classList.remove("active");
       mainSubMenuMobile.classList.remove("active");
-    }, 300);
+    }, 100);
   });
   openSubMenuMobile.addEventListener("click", (e) => {
     e.preventDefault();
