@@ -53,6 +53,12 @@ section.section-about {
         flex-wrap: nowrap;
         gap: 16px;
         padding-left: 20px;
+        overflow-x: scroll;
+        padding-right: 20px !important;
+
+        &::-webkit-scrollbar {
+          display: none;
+        }
       }
 
       .image {

@@ -49,11 +49,15 @@ function customDropdown() {
         // Update the button with clicked item values
         valueSelect.innerHTML = clickedHtml;
 
+        const isSelectTime = currentText.trim() === "Time";
+
         // Update the clicked item with the previous button values
-        if (currentImg) {
-          item.innerHTML = `<img src="${currentImg}" alt="" /><span>${currentText}</span>`;
-        } else {
-          item.innerHTML = `<span>${currentText}</span>`;
+        if (!isSelectTime) {
+          if (currentImg) {
+            item.innerHTML = `<img src="${currentImg}" alt="" /><span>${currentText}</span>`;
+          } else {
+            item.innerHTML = `<span>${currentText}</span>`;
+          }
         }
 
         closeAllDropdowns();
