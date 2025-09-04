@@ -356,8 +356,8 @@ function bookingForm() {
       let isValid = true;
       formBooking.find(".field").removeClass("error"); // chỉ reset field trong form này
 
-      const date = formBooking.find("input[name='date']").val().trim();
-      if (!date) {
+      const arrival = formBooking.find("input[name='date']").val().trim();
+      if (!arrival) {
         formBooking
           .find("input[name='date']")
           .closest(".field")
@@ -378,7 +378,8 @@ function bookingForm() {
       }
 
       const adult = formBooking.find("input[name='adult']").val().trim();
-      const child = formBooking.find("input[name='child']").val().trim() || "0";
+      const children =
+        formBooking.find("input[name='child']").val().trim() || "0";
       if (!adult) {
         formBooking
           .find("input[name='adult']")
@@ -419,30 +420,60 @@ function bookingForm() {
       if (isValid) {
         const formData = {
           action: "submit_booking_form",
-          date,
+          arrival,
           time,
           adult,
-          child,
+          children,
           fullname,
           email,
           phone,
           message
         };
 
-        formBooking.find("button[type='submit']").addClass("aloading");
+        // formBooking.find("button[type='submit']").addClass("aloading");
 
-        setTimeout(() => {
-          formBooking.find("button[type='submit']").removeClass("aloading");
-          formBooking[0].reset();
+        // setTimeout(() => {
+        //   formBooking.find("button[type='submit']").removeClass("aloading");
+        //   formBooking[0].reset();
 
-          formBooking.closest(".booking-form__inner").addClass("success");
+        //   formBooking.closest(".booking-form__inner").addClass("success");
 
-          setTimeout(() => {
-            formBooking.closest(".booking-form__inner").removeClass("success");
-          }, 10000);
-        }, 3000);
+        //   setTimeout(() => {
+        //     formBooking.closest(".booking-form__inner").removeClass("success");
+        //   }, 10000);
+        // }, 3000);
 
-        // $.ajax({...})
+        $.ajax({
+          url: ajaxUrl,
+          method: "POST",
+          data: formData,
+          beforeSend: function () {
+            formBooking.find("button[type='submit']").addClass("aloading");
+          },
+          success: function (res) {
+            formBooking.find("button[type='submit']").removeClass("aloading");
+
+            if (res.success) {
+              formBooking.closest(".booking-form__inner").addClass("success");
+              formBooking[0].reset();
+            } else {
+              formBooking
+                .find(".message")
+                .text(res.data || "Có lỗi xảy ra.")
+                .show();
+            }
+
+            setTimeout(() => {
+              formBooking
+                .closest(".booking-form__inner")
+                .removeClass("success");
+            }, 10000);
+          },
+          error: function (xhr, status, error) {
+            console.error(xhr.responseText);
+            alert("Có lỗi xảy ra, vui lòng thử lại.");
+          }
+        });
       }
     });
   });
