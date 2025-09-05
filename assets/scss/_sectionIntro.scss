@@ -1,0 +1,25 @@
+.section-intro {
+  .intro-wrapper {
+    padding-top: 80px;
+
+    .title {
+      max-width: 80%;
+      margin: 0 auto;
+    }
+
+    .desc {
+      margin-top: 24px;
+    }
+
+    .marquee-container {
+      margin-top: 80px;
+    }
+
+    .element {
+      height: 38px;
+      background-image: url("../../images/about-us-element.svg");
+      background-repeat: repeat-x;
+      background-size: auto 100%;
+    }
+  }
+}
