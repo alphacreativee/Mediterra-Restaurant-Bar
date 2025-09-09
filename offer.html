@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Offers</title>
+    <!-- import favicon -->
+    <link rel="icon" href="./assets/images/logo.svg" type="image/x-icon" />
+    <!-- meta -->
+    <meta property="og:url" content="" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="" />
+    <meta property="og:description" content="" />
+    <meta property="og:image" content="" />
+    <!-- meta -->
+    <link rel="stylesheet" href="./assets/libs/bootstrap.min.css" />
+    <link rel="stylesheet" href="./assets/libs/lenis.css" />
+    <link rel="stylesheet" href="./assets/libs/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="./assets/libs/lightpick.min.css" />
+    <!-- end meta -->
+    <!-- link custom css page -->
+    <link rel="stylesheet" href="./assets/fonts/Montserrat/font.min.css" />
+    <link rel="stylesheet" href="./assets/fonts/AmalfiCoast/font.min.css" />
+    <link rel="stylesheet" href="./assets/main/css/style.min.css" />
+    <!-- end link custom css page -->
+    <!-- scrollRestoration -->
+    <script>
+      if ("scrollRestoration" in history) {
+        history.scrollRestoration = "manual";
+      }
+    </script>
+  </head>
+  <body>
+    <!-- intro -->
+    <script>
+      fetch("./components/intro.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("intro").innerHTML = data;
+        });
+    </script>
+    <div id="intro" class="intro"></div>
+    <!-- end intro -->
+    <!-- cta  -->
+    <!-- end cta -->
+    <script>
+      fetch("./components/cta.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("cta").innerHTML = data;
+        });
+    </script>
+    <div id="cta" class="cta"></div>
+    <!-- layout -->
+    <!-- header -->
+    <script>
+      fetch("./components/header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header").innerHTML = data;
+          const currentPath = window.location.pathname || "/";
+          const navLinks = document.querySelectorAll(".header-container nav a");
+          navLinks.forEach((link) => {
+            const linkPath = link.getAttribute("href");
+            if (
+              linkPath === currentPath ||
+              (currentPath === "/" && linkPath === "/")
+            ) {
+              link.classList.add("active");
+            }
+          });
+        });
+    </script>
+    <header id="header"></header>
+    <!-- end header -->
+    <main>
+      <section class="hero no-content">
+        <!-- option image -->
+        <div class="hero-img">
+          <img src="./assets/images/draf/banner-our-story.webp" alt="" />
+        </div>
+        <!-- end option image -->
+        <!-- option slider -->
+        <div class="swiper swiper-hero d-none">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide overflow-hidden">
+              <div class="hero-box">
+                <img src="./assets/images/draf/banner-hero.webp" alt="" />
+              </div>
+            </div>
+            <div class="swiper-slide overflow-hidden">
+              <div class="hero-box">
+                <img src="./assets/images/draf/offers-bg.webp" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- end option slider -->
+        <div class="hero-content">
+          <div
+            class="hero-content-hand color-secondary font-hand h1-font data-fade-in-auto"
+          >
+            Mediterra Restaurant & Bar
+          </div>
+          <h2 class="h0-font color-white hero-content-title effect-blur-auto">
+            Savory Journeys tothe Southern Shores
+          </h2>
+        </div>
+        <!-- option khac trang home -->
+      </section>
+      <section class="section-intro">
+        <div class="container-fluid p-0">
+          <div class="row justify-content-center g-0 intro-wrapper">
+            <div class="col-lg-8">
+              <h1
+                class="title h1-font color-primary font-hand data-fade-in text-center"
+              >
+                The Story of Mediterra Restaurant & Bar
+              </h1>
+              <div class="desc h2-font color-primary text-center effect-blur">
+                Nestled in the heart of Ho Chi Minh City, Mediterra Restaurant &
+                Bar is a celebration of the Mediterranean spirit - where
+                sun-kissed flavors, elegant interiors, and warm hospitality come
+                together. Designed for those who appreciate refined simplicity
+                and timeless charm, Mediterra invites guests on a journey that's
+                both comforting and inspiring.
+              </div>
+            </div>
+            <div class="col-12">
+              <div
+                class="marquee-container"
+                data-speed="30"
+                hover-pause="false"
+              >
+                <div class="marquee-content">
+                  <div
+                    class="marquee-item text-uppercase b2-font color-primary"
+                  >
+                    Elegance
+                  </div>
+                  <div
+                    class="marquee-item text-uppercase b2-font color-primary"
+                  >
+                    Flavor
+                  </div>
+                  <div
+                    class="marquee-item text-uppercase b2-font color-primary"
+                  >
+                    Savor
+                  </div>
+                  <div
+                    class="marquee-item text-uppercase b2-font color-primary"
+                  >
+                    Harmony
+                  </div>
+                  <div
+                    class="marquee-item text-uppercase b2-font color-primary"
+                  >
+                    Luxury
+                  </div>
+                  <div
+                    class="marquee-item text-uppercase b2-font color-primary"
+                  >
+                    Gourmet
+                  </div>
+                  <div
+                    class="marquee-item text-uppercase b2-font color-primary"
+                  >
+                    Essence
+                  </div>
+                  <div
+                    class="marquee-item text-uppercase b2-font color-primary"
+                  >
+                    Indulgence
+                  </div>
+                </div>
+              </div>
+              <div class="element"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-news">
+        <div class="container-fluid news-wrapper">
+          <ul class="row news-list g-0">
+            <li class="news-list__item col-lg-4 col-6">
+              <a href="">
+                <div class="image">
+                  <div class="icon">
+                    <img src="./assets/images/draf/icon-offer.png" alt="" />
+                  </div>
+                  <img src="./assets/images/draf/about-1.webp" alt="" />
+                </div>
+                <div class="content text-center color-primary">
+                  <h4 class="title d-block h3-font">
+                    Mooncake Collection 2025
+                  </h4>
+                  <div class="desc b1-font">
+                    We're introducing fresh coastal flavors from Sicily to
+                    Santorini.
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="news-list__item col-lg-4 col-6">
+              <a href="">
+                <div class="image">
+                  <div class="icon">
+                    <img src="./assets/images/draf/icon-offer.png" alt="" />
+                  </div>
+                  <img src="./assets/images/draf/about-2.webp" alt="" />
+                </div>
+                <div class="content text-center color-primary">
+                  <h4 class="title d-block h3-font">
+                    Mooncake Collection 2025
+                  </h4>
+                  <div class="desc b1-font">
+                    We're introducing fresh coastal flavors from Sicily to
+                    Santorini.
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="news-list__item col-lg-4 col-6">
+              <a href="">
+                <div class="image">
+                  <div class="icon">
+                    <img src="./assets/images/draf/icon-offer.png" alt="" />
+                  </div>
+                  <img src="./assets/images/draf/about-3.webp" alt="" />
+                </div>
+                <div class="content text-center color-primary">
+                  <h4 class="title d-block h3-font">
+                    Mooncake Collection 2025
+                  </h4>
+                  <div class="desc b1-font">
+                    We're introducing fresh coastal flavors from Sicily to
+                    Santorini.
+                  </div>
+                </div>
+              </a>
+            </li>
+            <li class="news-list__item col-lg-4 col-6">
+              <a href="">
+                <div class="image">
+                  <div class="icon">
+                    <img src="./assets/images/draf/icon-offer.png" alt="" />
+                  </div>
+                  <img src="./assets/images/draf/about-4.webp" alt="" />
+                </div>
+                <div class="content text-center color-primary">
+                  <h4 class="title d-block h3-font">
+                    Sip, Savor, and Enjoy Exclusive Rewards
+                  </h4>
+                  <div class="desc b1-font">
+                     An unforgettable evening deserves an exclusive reward. From
+                    April to June 2025
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </main>
+    <!-- layout -->
+
+    <!-- modal booking -->
+    <div class="modal fade" tabindex="-1" id="modalBooking" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-fullscreen">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="btn-close" data-bs-dismiss="modal">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 18 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M1 1L17 17" stroke="#F4C233" />
+                <path d="M1 17L17 1" stroke="#F4C233" />
+              </svg>
+            </div>
+            <div class="booking-form">
+              <div class="booking-form__wrapper">
+                <div class="booking-form__inner">
+                  <h2 class="title h1-font font-hand color-primary text-center">
+                    Book a table
+                  </h2>
+                  <form action="">
+                    <div class="field-group">
+                      <div class="field">
+                        <input
+                          type="text"
+                          name="date"
+                          placeholder="Arrival"
+                          autocomplete="off"
+                          readonly
+                        />
+                      </div>
+                      <div class="field">
+                        <div class="dropdown-custom">
+                          <div class="dropdown-custom-btn" name="time">
+                            <div class="value-select">
+                              <span>Time</span>
+                            </div>
+                            <div class="icon">
+                              <img src="./assets/images/ic-watch.svg" alt="" />
+                            </div>
+                          </div>
+                          <div class="dropdown-custom-menu">
+                            <div class="dropdown-custom-item">
+                              <span>17:30</span>
+                            </div>
+
+                            <div class="dropdown-custom-item">
+                              <span>18:00</span>
+                            </div>
+                            <div class="dropdown-custom-item">
+                              <span>18:00</span>
+                            </div>
+                            <div class="dropdown-custom-item">
+                              <span>18:30</span>
+                            </div>
+                            <div class="dropdown-custom-item">
+                              <span>19:00</span>
+                            </div>
+                            <div class="dropdown-custom-item">
+                              <span>19:30</span>
+                            </div>
+                            <div class="dropdown-custom-item">
+                              <span>20:00</span>
+                            </div>
+                            <div class="dropdown-custom-item">
+                              <span>20:30</span>
+                            </div>
+                            <div class="dropdown-custom-item">
+                              <span>21:00</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="field-group">
+                      <div class="field">
+                        <input
+                          type="number"
+                          name="adult"
+                          placeholder="Adults"
+                          autocomplete="off"
+                        />
+                      </div>
+                      <div class="field">
+                        <input
+                          type="number"
+                          name="child"
+                          placeholder="Children (<6 yrs old)"
+                          autocomplete="off"
+                        />
+                      </div>
+                    </div>
+                    <div class="field">
+                      <input
+                        type="text"
+                        placeholder="Fullname"
+                        name="fullname"
+                      />
+                    </div>
+                    <div class="field">
+                      <input type="email" placeholder="Email" name="email" />
+                    </div>
+                    <div class="field">
+                      <input type="text" placeholder="Phone" name="phone" />
+                    </div>
+                    <div class="field">
+                      <textarea
+                        name="message"
+                        placeholder="Special request"
+                      ></textarea>
+                    </div>
+                    <button type="submit">SUBMIT REQUEST</button>
+                  </form>
+
+                  <div class="logo">
+                    <img src="./assets/images/logo-yellow.svg" alt="" />
+                  </div>
+                  <div class="message b1-font color-primary text-center">
+                    Đặt bàn thành công, đội ngũ tư vấn sẽ gọi điện cho bạn để
+                    xác nhận. Cám ơn bạn đã liên hệ.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end modal booking -->
+
+    <!-- footer -->
+    <script>
+      fetch("./components/footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+
+    <footer id="footer"></footer>
+    <!-- end footer -->
+    <!-- end layout -->
+
+    <script src="./assets/libs/jquery-3.7.1.js"></script>
+    <script src="./assets/libs/lenis.min.js"></script>
+    <script src="./assets/libs/gsap.min.js"></script>
+    <script src="./assets/libs/ScrollTrigger.min.js"></script>
+    <script src="./assets/libs/SplitText.min.js"></script>
+    <script src="./assets/libs/bootstrap.bundle.min.js"></script>
+    <script src="./assets/libs/imagesloaded.pkgd.min.js"></script>
+    <script src="./assets/libs/swiper-bundle.min.js"></script>
+    <script src="./assets/libs/moment.min.js"></script>
+    <script src="./assets/libs/lightpick.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@19.1.3/dist/lazyload.min.js"></script>
+    <!-- import custom js -->
+    <script type="module" src="./assets/main/js/script.min.js"></script>
+
+    <!-- end import custom js -->
+  </body>
+</html>
+<!-- https://gsap.com/community/forums/topic/30338-circular-carouselslider/ -->
