@@ -3,6 +3,15 @@
   height: 100svh;
   position: relative;
   overflow: hidden;
+  &.no-content {
+    height: 640px;
+    &::before {
+      content: unset;
+    }
+    .hero-content {
+      display: none;
+    }
+  }
   &::before {
     content: "";
     position: absolute;
