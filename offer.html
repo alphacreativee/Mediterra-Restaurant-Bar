@@ -59,9 +59,17 @@
         .then((data) => {
           document.getElementById("header").innerHTML = data;
           const currentPath = window.location.pathname || "/";
-          const navLinks = document.querySelectorAll(".header-container nav a");
+          console.log(currentPath);
+
+          const navLinks = document.querySelectorAll(".header-menu ul>li>a");
           navLinks.forEach((link) => {
-            const linkPath = link.getAttribute("href");
+            let linkPath = link.getAttribute("href");
+
+            if (linkPath.startsWith("./")) {
+              linkPath = linkPath.substring(1);
+            }
+
+            console.log(linkPath);
             if (
               linkPath === currentPath ||
               (currentPath === "/" && linkPath === "/")

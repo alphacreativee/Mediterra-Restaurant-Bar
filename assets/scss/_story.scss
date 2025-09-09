@@ -1,0 +1,45 @@
+.story {
+  &-list {
+    padding: 40px;
+  }
+  &-image {
+    width: 100%;
+    aspect-ratio: 680 / 640;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  &-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+  }
+  &-item {
+    height: 100%;
+
+    &:nth-child(odd) {
+      .story-content {
+        background-color: var(--color-primary);
+        padding-left: 64px;
+        padding-right: 115px;
+        & > * {
+          color: var(--color-white);
+        }
+      }
+    }
+    &:nth-child(even) {
+      .story-content {
+        background-color: var(--color-white);
+        padding-right: 64px;
+        padding-left: 115px;
+        & > * {
+          color: var(--color-primary);
+        }
+      }
+    }
+  }
+}

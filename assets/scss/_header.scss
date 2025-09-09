@@ -102,6 +102,12 @@
         & > a {
           position: relative;
           transition: all 0.3s;
+          &.active {
+            &::before {
+              transform: scaleX(1);
+              transform-origin: bottom left;
+            }
+          }
           &:hover {
             color: var(--color-primary);
             &::before {
