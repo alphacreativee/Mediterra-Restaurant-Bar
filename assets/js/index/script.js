@@ -642,6 +642,14 @@ function sectionRelated() {
   });
 }
 
+function galleryImg() {
+  if (!document.querySelector(".section-gallery")) return;
+  var lightboxDescription = GLightbox({
+    selector: ".glightbox",
+    loop: true,
+    touchNavigation: true
+  });
+}
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
@@ -655,6 +663,7 @@ const init = () => {
   effectText();
   headerMobile();
   sectionRelated();
+  galleryImg();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body

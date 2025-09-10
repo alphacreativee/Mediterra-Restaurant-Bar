@@ -593,3 +593,10 @@
     font-weight: 600;
   }
 }
+#glightbox-slider {
+  background-image: url("../../images/bg_gallery.webp");
+}
+#glightbox-slider .gslide-media {
+  box-shadow: none !important;
+  border: 2px solid var(--color-primary);
+}
