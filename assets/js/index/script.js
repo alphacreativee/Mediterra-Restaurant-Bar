@@ -618,6 +618,30 @@ function headerMobile() {
     mainSubMenuMobile.classList.remove("active");
   });
 }
+
+function sectionRelated() {
+  if ($(".swiper-related").length < 1) return;
+
+  var swiperRelated = new Swiper(".swiper-related", {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    navigation: {
+      nextEl: ".swiper-button-next.custom-arrow",
+      prevEl: ".swiper-button-prev.custom-arrow",
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+        spaceBetween: 30,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 40,
+      },
+    },
+  });
+}
+
 function galleryImg() {
   if (!document.querySelector(".section-gallery")) return;
   var lightboxDescription = GLightbox({
@@ -638,6 +662,7 @@ const init = () => {
   hero();
   effectText();
   headerMobile();
+  sectionRelated();
   galleryImg();
 };
 preloadImages("img").then(() => {
