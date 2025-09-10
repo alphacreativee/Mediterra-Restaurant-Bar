@@ -59,21 +59,36 @@
         .then((data) => {
           document.getElementById("header").innerHTML = data;
           const currentPath = window.location.pathname || "/";
-          console.log(currentPath);
+          console.log("Current path:", currentPath);
 
           const navLinks = document.querySelectorAll(".header-menu ul>li>a");
           navLinks.forEach((link) => {
-            let linkPath = link.getAttribute("href");
+            const linkPath = link.getAttribute("href");
+            console.log("Link path:", linkPath);
 
-            if (linkPath.startsWith("./")) {
-              linkPath = linkPath.substring(1);
+            // Normalize paths for comparison
+            let normalizedCurrentPath = currentPath;
+            let normalizedLinkPath = linkPath;
+
+            // Remove leading "./" from link path
+            if (normalizedLinkPath.startsWith("./")) {
+              normalizedLinkPath = normalizedLinkPath.substring(1);
             }
 
-            console.log(linkPath);
-            if (
-              linkPath === currentPath ||
-              (currentPath === "/" && linkPath === "/")
-            ) {
+            // For GitHub Pages, get the last segment of the path
+            const currentSegment =
+              normalizedCurrentPath.split("/").pop() || "/";
+            const linkSegment = normalizedLinkPath.split("/").pop() || "/";
+
+            // Check if paths match
+            const isMatch =
+              normalizedLinkPath === normalizedCurrentPath || // Exact match
+              currentSegment === linkSegment || // Segment match
+              (currentPath.endsWith(normalizedLinkPath) &&
+                normalizedLinkPath !== "/") || // Ends with
+              (currentPath === "/" && (linkPath === "/" || linkPath === "./")); // Home page
+
+            if (isMatch) {
               link.classList.add("active");
             }
           });
