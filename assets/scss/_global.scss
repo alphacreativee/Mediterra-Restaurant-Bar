@@ -616,6 +616,10 @@
   svg {
     display: none;
   }
+  &.disabled {
+    opacity: 1;
+    background-image: url("../../images/ic_arrow_prev_disable.svg");
+  }
 }
 .glightbox-clean .gnext {
   top: auto;
@@ -631,6 +635,10 @@
   }
   svg {
     display: none;
+  }
+  &.disabled {
+    opacity: 1;
+    background-image: url("../../images/ic_arrow_next_disable.svg");
   }
 }
 .glightbox-clean .gclose {

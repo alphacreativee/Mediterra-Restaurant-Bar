@@ -646,7 +646,6 @@ function galleryImg() {
   if (!document.querySelector(".section-gallery")) return;
   var lightboxDescription = GLightbox({
     selector: ".glightbox",
-    loop: true,
     touchNavigation: true,
   });
 }
