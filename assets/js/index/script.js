@@ -650,6 +650,7 @@ function galleryImg() {
   });
 }
 function tabContentMenu() {
+  if (!document.querySelector(".section-menu")) return;
   // Tab switching functionality
   const tabButtons = document.querySelectorAll('[data-bs-toggle="pill"]');
   const contentDivs = document.querySelectorAll(".menu-content-top");
