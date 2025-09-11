@@ -114,7 +114,7 @@ function marquee() {
     gsap.set(content, {
       x: 0,
       willChange: "transform",
-      force3D: true,
+      force3D: true
     });
 
     const tl = gsap.timeline({ repeat: -1 });
@@ -123,8 +123,8 @@ function marquee() {
       duration: fullWidth / speed,
       ease: "none",
       modifiers: {
-        x: (x) => `${parseFloat(x) % fullWidth}px`,
-      },
+        x: (x) => `${parseFloat(x) % fullWidth}px`
+      }
     });
 
     // Hover pause
@@ -139,7 +139,7 @@ function intro() {
   if (document.querySelector(".intro").length < 1) return;
 
   const tl = gsap.timeline({
-    defaults: { duration: 2, ease: "power2.inOut" },
+    defaults: { duration: 2, ease: "power2.inOut" }
   });
   // effect text banner
 
@@ -156,7 +156,7 @@ function intro() {
           {
             "will-change": "opacity, transform",
             opacity: 0,
-            y: 20,
+            y: 20
           },
           {
             opacity: 1,
@@ -165,7 +165,7 @@ function intro() {
             ease: "sine.out",
             onStart: () => {
               gsap.set(element, { opacity: 1 });
-            },
+            }
           },
           index * 0.1
         );
@@ -177,7 +177,7 @@ function intro() {
       elementsBlur.forEach((elementBlur, elementIndex) => {
         let splitBlur = SplitText.create(elementBlur, {
           type: "words, chars",
-          charsClass: "split-char",
+          charsClass: "split-char"
         });
 
         // Tính toán delay để chạy sau fade elements
@@ -192,7 +192,7 @@ function intro() {
             filter: "blur(5px)",
             y: 10,
             willChange: "filter, transform",
-            opacity: 0,
+            opacity: 0
           },
           {
             ease: "none",
@@ -203,7 +203,7 @@ function intro() {
             duration: 0.6,
             onStart: () => {
               gsap.set(elementBlur, { opacity: 1 });
-            },
+            }
           },
           startTime
         );
@@ -226,7 +226,7 @@ function intro() {
       clipPath: "inset(0% 0% 100% 0%)",
       onComplete: () => {
         document.querySelector(".intro").classList.add("d-none");
-      },
+      }
     }
   );
 }
@@ -255,9 +255,9 @@ function itemEffect() {
           end: "bottom top",
           scrub: 1,
           ease: "power4",
-          delay: 0.2,
+          delay: 0.2
           // markers: true
-        },
+        }
       }
     );
   });
@@ -276,8 +276,8 @@ function itemEffect() {
         trigger: section,
         start: "top 80%",
         end: "bottom top",
-        scrub: true,
-      },
+        scrub: true
+      }
     });
   });
 
@@ -287,18 +287,18 @@ function itemEffect() {
       {
         "will-change": "opacity, transform",
         opacity: 0,
-        y: 40,
+        y: 40
       },
       {
         scrollTrigger: {
           trigger: element,
           start: "top 90%",
-          end: "bottom 90%",
+          end: "bottom 90%"
         },
         opacity: 1,
         y: 0,
         duration: 0.7,
-        ease: "sine.out",
+        ease: "sine.out"
       }
     );
   });
@@ -345,7 +345,7 @@ function bookingForm() {
             dateField.value = start.format("DD/MM/YYYY");
             dateField.classList.remove("error");
           }
-        },
+        }
       });
     }
 
@@ -427,7 +427,7 @@ function bookingForm() {
           fullname,
           email,
           phone,
-          message,
+          message
         };
 
         // formBooking.find("button[type='submit']").addClass("aloading");
@@ -472,7 +472,7 @@ function bookingForm() {
           error: function (xhr, status, error) {
             console.error(xhr.responseText);
             alert("Có lỗi xảy ra, vui lòng thử lại.");
-          },
+          }
         });
       }
     });
@@ -488,7 +488,7 @@ function CTA() {
       self.direction === 1
         ? document.querySelector(".cta").classList.add("hide")
         : document.querySelector(".cta").classList.remove("hide");
-    },
+    }
   });
 }
 function hero() {
@@ -499,7 +499,7 @@ function hero() {
       speed: 1500,
       loop: true,
       autoplay: {
-        delay: 3000,
+        delay: 3000
       },
 
       on: {
@@ -530,8 +530,8 @@ function hero() {
               slideInner.style.transition = `${speed}ms ${easing}`;
             }
           });
-        },
-      },
+        }
+      }
     });
   });
 }
@@ -543,18 +543,18 @@ function effectText() {
       {
         "will-change": "opacity, transform",
         opacity: 0,
-        y: 20,
+        y: 20
       },
       {
         scrollTrigger: {
           trigger: element,
           start: "top 90%",
-          end: "bottom 90%",
+          end: "bottom 90%"
         },
         opacity: 1,
         y: 0,
         duration: 0.5,
-        ease: "sine.out",
+        ease: "sine.out"
       }
     );
   });
@@ -562,7 +562,7 @@ function effectText() {
   elementsBlur.forEach((elementBlur) => {
     let splitBlur = SplitText.create(elementBlur, {
       type: "words, chars",
-      charsClass: "split-char",
+      charsClass: "split-char"
     });
     gsap.fromTo(
       splitBlur.chars,
@@ -570,7 +570,7 @@ function effectText() {
         filter: "blur(5px) ",
         y: 10,
         willChange: "filter, transform",
-        opacity: 0,
+        opacity: 0
       },
       {
         ease: "none",
@@ -581,8 +581,8 @@ function effectText() {
 
         scrollTrigger: {
           trigger: elementBlur,
-          start: "top 80%",
-        },
+          start: "top 80%"
+        }
       }
     );
   });
@@ -627,18 +627,18 @@ function sectionRelated() {
     spaceBetween: 20,
     navigation: {
       nextEl: ".swiper-button-next.custom-arrow",
-      prevEl: ".swiper-button-prev.custom-arrow",
+      prevEl: ".swiper-button-prev.custom-arrow"
     },
     breakpoints: {
       768: {
         slidesPerView: 2,
-        spaceBetween: 30,
+        spaceBetween: 30
       },
       1024: {
         slidesPerView: 3,
-        spaceBetween: 40,
-      },
-    },
+        spaceBetween: 40
+      }
+    }
   });
 }
 
@@ -646,33 +646,49 @@ function galleryImg() {
   if (!document.querySelector(".section-gallery")) return;
   var lightboxDescription = GLightbox({
     selector: ".glightbox",
-    touchNavigation: true,
+    touchNavigation: true
   });
 }
 function tabContentMenu() {
   if (!document.querySelector(".section-menu")) return;
-  // Tab switching functionality
   const tabButtons = document.querySelectorAll('[data-bs-toggle="pill"]');
   const contentDivs = document.querySelectorAll(".menu-content-top");
 
+  // 👉 Tính chiều cao lớn nhất
+  function adjustParentHeight() {
+    let maxHeight = 0;
+    contentDivs.forEach((div) => {
+      const h = div.offsetHeight;
+      if (h > maxHeight) {
+        maxHeight = h;
+      }
+    });
+    const parent = document.querySelector(".section-menu-top");
+    if (parent) {
+      parent.style.minHeight = maxHeight + "px";
+    }
+  }
+
+  // Gọi khi load xong
+  window.addEventListener("load", adjustParentHeight);
+  // Gọi lại khi resize
+  window.addEventListener("resize", adjustParentHeight);
+
+  // Tab switching
   tabButtons.forEach((button) => {
     button.addEventListener("click", function () {
       const targetContent = this.getAttribute("data-content");
+      contentDivs.forEach((div) => div.classList.remove("active"));
 
-      // Hide all content divs
-      contentDivs.forEach((div) => {
-        div.classList.remove("active");
-      });
-
-      // Show target content div
       setTimeout(() => {
         const targetDiv = document.querySelector(
           `[data-target="${targetContent}"]`
         );
         if (targetDiv) {
           targetDiv.classList.add("active");
+          adjustParentHeight(); // cập nhật lại chiều cao khi đổi tab
         }
-      }, 100);
+      }, 50);
     });
   });
 
@@ -687,34 +703,24 @@ function tabContentMenu() {
     menuItems.forEach((item) => {
       item.addEventListener("click", function () {
         const imageIndex = this.getAttribute("data-image");
-
-        // Remove active class from all menu items in this tab
-        menuItems.forEach((menuItem) => {
-          menuItem.classList.remove("active");
-        });
-
-        // Add active class to clicked item
+        menuItems.forEach((menuItem) => menuItem.classList.remove("active"));
         this.classList.add("active");
 
-        // Hide all images in this tab
-        menuImages.forEach((img) => {
-          img.classList.remove("active");
-        });
-
-        // Show corresponding image
+        menuImages.forEach((img) => img.classList.remove("active"));
         const targetImage = tab.querySelector(`[data-index="${imageIndex}"]`);
         if (targetImage) {
           targetImage.classList.add("active");
+          adjustParentHeight(); // gọi lại khi ảnh đổi
         }
       });
     });
   }
 
-  // Initialize menu items for all tabs
   initializeMenuItems("#pills-food");
   initializeMenuItems("#pills-drink");
   initializeMenuItems("#pills-wine");
 }
+
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
