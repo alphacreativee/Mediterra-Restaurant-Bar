@@ -186,6 +186,7 @@
       .price {
         transition: all 0.3s ease;
       }
+      &:hover,
       &.active {
         background-color: var(--color-other);
         border-top: 1px solid transparent;
