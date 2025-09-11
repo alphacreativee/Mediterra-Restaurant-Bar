@@ -646,6 +646,9 @@
   right: 40px;
   background-color: transparent;
   opacity: 1;
+  @media (max-width: 991px) {
+    right: 20px;
+  }
   &:hover {
     background-color: transparent;
   }
