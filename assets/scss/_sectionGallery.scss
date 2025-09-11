@@ -1,16 +1,20 @@
 .section-gallery {
   padding: 40px;
-  .gallery-container {
-    column-count: 3;
-    column-gap: 40px;
-    column-fill: balance;
+  @media (max-width: 991px) {
+    padding: 64px 20px;
   }
 
   .gallery {
     &-container {
       columns: 3;
       column-gap: 40px;
-
+      @media (max-width: 991px) {
+        column-count: 2;
+        gap: 32px;
+      }
+      @media (max-width: 767px) {
+        column-count: 1;
+      }
       & > * {
         margin-bottom: 40px;
         &:last-child {

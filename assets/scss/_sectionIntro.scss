@@ -9,6 +9,10 @@
 
     .desc {
       margin-top: 24px;
+      @media (max-width: 991px) {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
     }
 
     .marquee-container {
