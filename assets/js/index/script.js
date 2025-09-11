@@ -654,7 +654,7 @@ function tabContentMenu() {
   const tabButtons = document.querySelectorAll('[data-bs-toggle="pill"]');
   const contentDivs = document.querySelectorAll(".menu-content-top");
 
-  // 👉 Tính chiều cao lớn nhất
+  // Calculate the tallest height among content divs
   function adjustParentHeight() {
     let maxHeight = 0;
     contentDivs.forEach((div) => {
@@ -669,10 +669,8 @@ function tabContentMenu() {
     }
   }
 
-  // Gọi khi load xong
+  // On window load
   window.addEventListener("load", adjustParentHeight);
-  // Gọi lại khi resize
-  window.addEventListener("resize", adjustParentHeight);
 
   // Tab switching
   tabButtons.forEach((button) => {
@@ -686,17 +684,14 @@ function tabContentMenu() {
         );
         if (targetDiv) {
           targetDiv.classList.add("active");
-          adjustParentHeight(); // cập nhật lại chiều cao khi đổi tab
+          adjustParentHeight();
         }
       }, 50);
     });
   });
 
-  // Menu item click functionality for each tab
-  function initializeMenuItems(tabId) {
-    const tab = document.querySelector(tabId);
-    if (!tab) return;
-
+  // Initialize menu item click events inside a tab
+  function initializeMenuItems(tab) {
     const menuItems = tab.querySelectorAll(".menu-list-item");
     const menuImages = tab.querySelectorAll(".menu-img");
 
@@ -710,15 +705,17 @@ function tabContentMenu() {
         const targetImage = tab.querySelector(`[data-index="${imageIndex}"]`);
         if (targetImage) {
           targetImage.classList.add("active");
-          adjustParentHeight(); // gọi lại khi ảnh đổi
+          adjustParentHeight();
         }
       });
     });
   }
 
-  initializeMenuItems("#pills-food");
-  initializeMenuItems("#pills-drink");
-  initializeMenuItems("#pills-wine");
+  // Loop through all tab-pane elements and initialize them
+  const allTabs = document.querySelectorAll(".tab-content .tab-pane");
+  allTabs.forEach((tab) => {
+    initializeMenuItems(tab);
+  });
 }
 
 const init = () => {
