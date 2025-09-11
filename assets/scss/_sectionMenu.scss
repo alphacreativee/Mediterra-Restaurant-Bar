@@ -1,8 +1,14 @@
 .section-menu {
   padding: 40px;
+  @media (max-width: 991px) {
+    padding: 40px 20px;
+  }
   &-wrapper {
     background-color: var(--color-white);
     padding: 40px 40px 24px;
+    @media (max-width: 991px) {
+      padding: 16px 16px 12%;
+    }
   }
   &-note {
     margin-top: 24px;
@@ -11,6 +17,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     margin-bottom: 32px;
+    @media (max-width: 991px) {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
     .nav {
       display: flex;
       gap: 16px;
