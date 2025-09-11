@@ -649,6 +649,71 @@ function galleryImg() {
     touchNavigation: true,
   });
 }
+function tabContentMenu() {
+  // Tab switching functionality
+  const tabButtons = document.querySelectorAll('[data-bs-toggle="pill"]');
+  const contentDivs = document.querySelectorAll(".menu-content-top");
+
+  tabButtons.forEach((button) => {
+    button.addEventListener("click", function () {
+      const targetContent = this.getAttribute("data-content");
+
+      // Hide all content divs
+      contentDivs.forEach((div) => {
+        div.classList.remove("active");
+      });
+
+      // Show target content div
+      setTimeout(() => {
+        const targetDiv = document.querySelector(
+          `[data-target="${targetContent}"]`
+        );
+        if (targetDiv) {
+          targetDiv.classList.add("active");
+        }
+      }, 100);
+    });
+  });
+
+  // Menu item click functionality for each tab
+  function initializeMenuItems(tabId) {
+    const tab = document.querySelector(tabId);
+    if (!tab) return;
+
+    const menuItems = tab.querySelectorAll(".menu-list-item");
+    const menuImages = tab.querySelectorAll(".menu-img");
+
+    menuItems.forEach((item) => {
+      item.addEventListener("click", function () {
+        const imageIndex = this.getAttribute("data-image");
+
+        // Remove active class from all menu items in this tab
+        menuItems.forEach((menuItem) => {
+          menuItem.classList.remove("active");
+        });
+
+        // Add active class to clicked item
+        this.classList.add("active");
+
+        // Hide all images in this tab
+        menuImages.forEach((img) => {
+          img.classList.remove("active");
+        });
+
+        // Show corresponding image
+        const targetImage = tab.querySelector(`[data-index="${imageIndex}"]`);
+        if (targetImage) {
+          targetImage.classList.add("active");
+        }
+      });
+    });
+  }
+
+  // Initialize menu items for all tabs
+  initializeMenuItems("#pills-food");
+  initializeMenuItems("#pills-drink");
+  initializeMenuItems("#pills-wine");
+}
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
@@ -663,6 +728,7 @@ const init = () => {
   headerMobile();
   sectionRelated();
   galleryImg();
+  tabContentMenu();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body

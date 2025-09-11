@@ -202,134 +202,443 @@
         </div>
       </section>
       <section class="section-menu">
-        <div class="section-menu-tab">
-          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link active"
-                id="pills-food-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#pills-food"
-                type="button"
-                role="tab"
-                aria-controls="pills-food"
-                aria-selected="true"
-              >
-                <div class="tab-inner">
-                  <div class="icon">
-                    <svg
-                      width="16"
-                      height="8"
-                      viewBox="0 0 16 8"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M0.99862 2.35762L4.11767 4.04808L1.10781 6.30545L1.0532 4.33154L0.99862 2.35762Z"
-                        stroke="white"
-                        stroke-miterlimit="10"
-                      />
-                      <path
-                        d="M9.70691 6.95462C6.36433 7.04721 4.39578 4.23895 4.39578 4.23895C4.39578 4.23895 6.20602 1.32719 9.55406 1.24005C12.8966 1.14746 14.8652 3.95574 14.8652 3.95574C14.8652 3.95574 13.0549 6.86749 9.70691 6.95462Z"
-                        stroke="currentColor"
-                        stroke-miterlimit="10"
-                      />
-                    </svg>
+        <div class="section-menu-wrapper">
+          <div class="section-menu-tab">
+            <ul class="nav nav-pills 3" id="pills-tab" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link active"
+                  id="pills-food-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pills-food"
+                  type="button"
+                  role="tab"
+                  aria-controls="pills-food"
+                  aria-selected="true"
+                  data-content="food"
+                >
+                  <div class="tab-inner">
+                    <div class="icon">
+                      <svg
+                        width="16"
+                        height="8"
+                        viewBox="0 0 16 8"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M0.99862 2.35762L4.11767 4.04808L1.10781 6.30545L1.0532 4.33154L0.99862 2.35762Z"
+                          stroke="currentColor"
+                          stroke-miterlimit="10"
+                        />
+                        <path
+                          d="M9.70691 6.95462C6.36433 7.04721 4.39578 4.23895 4.39578 4.23895C4.39578 4.23895 6.20602 1.32719 9.55406 1.24005C12.8966 1.14746 14.8652 3.95574 14.8652 3.95574C14.8652 3.95574 13.0549 6.86749 9.70691 6.95462Z"
+                          stroke="currentColor"
+                          stroke-miterlimit="10"
+                        />
+                      </svg>
+                    </div>
+                    <div class="text">Food</div>
                   </div>
-                  <div class="text">Food</div>
-                </div>
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                id="pills-drink-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#pills-drink"
-                type="button"
-                role="tab"
-                aria-controls="pills-drink"
-                aria-selected="false"
-              >
-                <div class="tab-inner">
-                  <div class="icon">
-                    <svg
-                      width="11"
-                      height="19"
-                      viewBox="0 0 11 19"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M1.30973 4.08269H9.6873M5.5 11.8209V14.731M5.5 11.8209C9.43415 11.8209 10 4.27724 10 1H1C1 4.27724 1.56585 11.8209 5.5 11.8209ZM5.5 14.4844C5.5 14.4844 4.82098 18 2.78988 18H7.60258C7.60258 18 5.5 15.8051 5.5 14.4844Z"
-                        stroke="currentColor"
-                        stroke-miterlimit="10"
-                      />
-                    </svg>
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="pills-drink-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pills-drink"
+                  type="button"
+                  role="tab"
+                  aria-controls="pills-drink"
+                  aria-selected="false"
+                  data-content="drink"
+                >
+                  <div class="tab-inner">
+                    <div class="icon">
+                      <svg
+                        width="11"
+                        height="19"
+                        viewBox="0 0 11 19"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M1.30973 4.08269H9.6873M5.5 11.8209V14.731M5.5 11.8209C9.43415 11.8209 10 4.27724 10 1H1C1 4.27724 1.56585 11.8209 5.5 11.8209ZM5.5 14.4844C5.5 14.4844 4.82098 18 2.78988 18H7.60258C7.60258 18 5.5 15.8051 5.5 14.4844Z"
+                          stroke="currentColor"
+                          stroke-miterlimit="10"
+                        />
+                      </svg>
+                    </div>
+                    <div class="text">Drink</div>
                   </div>
-                  <div class="text">Drink</div>
-                </div>
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                id="pills-wine-tab"
-                data-bs-toggle="pill"
-                data-bs-target="#pills-wine"
-                type="button"
-                role="tab"
-                aria-controls="pills-wine"
-                aria-selected="false"
-              >
-                <div class="tab-inner">
-                  <div class="icon">
-                    <svg
-                      width="15"
-                      height="16"
-                      viewBox="0 0 15 16"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M11.7721 10.2648H3.09018M11.9098 5.7142H3.09018M12.3938 8C12.3938 10.9107 10.2035 13.272 7.50001 13.272C4.79654 13.272 2.60623 10.9149 2.60623 8C2.60623 5.08508 4.79654 2.73218 7.50001 2.73218C10.2035 2.73218 12.3938 5.09347 12.3938 8ZM14 8C14 11.867 11.0879 15 7.50001 15C3.91207 15 1 11.867 1 8C1 4.13301 3.9079 1 7.50001 1C11.0921 1 14 4.13301 14 8Z"
-                        stroke="currentColor"
-                        stroke-miterlimit="10"
-                      />
-                    </svg>
+                </button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button
+                  class="nav-link"
+                  id="pills-wine-tab"
+                  data-bs-toggle="pill"
+                  data-bs-target="#pills-wine"
+                  type="button"
+                  role="tab"
+                  aria-controls="pills-wine"
+                  aria-selected="false"
+                  data-content="wine"
+                >
+                  <div class="tab-inner">
+                    <div class="icon">
+                      <svg
+                        width="15"
+                        height="16"
+                        viewBox="0 0 15 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M11.7721 10.2648H3.09018M11.9098 5.7142H3.09018M12.3938 8C12.3938 10.9107 10.2035 13.272 7.50001 13.272C4.79654 13.272 2.60623 10.9149 2.60623 8C2.60623 5.08508 4.79654 2.73218 7.50001 2.73218C10.2035 2.73218 12.3938 5.09347 12.3938 8ZM14 8C14 11.867 11.0879 15 7.50001 15C3.91207 15 1 11.867 1 8C1 4.13301 3.9079 1 7.50001 1C11.0921 1 14 4.13301 14 8Z"
+                          stroke="currentColor"
+                          stroke-miterlimit="10"
+                        />
+                      </svg>
+                    </div>
+                    <div class="text">Wine</div>
                   </div>
-                  <div class="text">Wine</div>
+                </button>
+              </li>
+            </ul>
+            <div class="section-menu-top">
+              <div
+                class="menu-content-top b1-font color-primary font-main active"
+                data-target="food"
+              >
+                Savor the essence of the Mediterranean coast, where sun-kissed
+                ingredients, artisanal techniques, and timeless flavors come
+                together in perfect harmony.
+              </div>
+              <div
+                class="menu-content-top b1-font color-primary font-main"
+                data-target="drink"
+              >
+                Savor the essence of the Mediterranean coast, where sun-kissed
+                ingredients, artisanal techniques, Drink
+              </div>
+              <div
+                class="menu-content-top b1-font color-primary font-main"
+                data-target="wine"
+              >
+                Savor the essence of the Mediterranean coast, where sun-kissed
+                ingredients, artisanal techniques, and timeless flavors come
+                together in perfect harmony3.
+              </div>
+            </div>
+          </div>
+          <div class="section-menu-result">
+            <div class="tab-content" id="pills-tabContent">
+              <div
+                class="tab-pane fade show active"
+                id="pills-food"
+                role="tabpanel"
+                aria-labelledby="pills-food-tab"
+              >
+                <div class="menu-list-inner">
+                  <div class="menu-list-left">
+                    <div class="menu-list-name" data-lenis-prevent>
+                      <div class="menu-list-item active" data-image="0">
+                        <div class="name b1-font color-primary font-main">
+                          Greek salad, capsicum, cucumber, tomato cherry, feta
+                          cheese, sherry vinegar
+                        </div>
+                        <div class="price b1-font color-primary font-main">
+                          200.000đ
+                        </div>
+                      </div>
+                      <div class="menu-list-item" data-image="1">
+                        <div class="name b1-font color-primary font-main">
+                          Tuna nicoise, lettuce, quail egg, potato, tomato
+                          cherry, french bean
+                        </div>
+                        <div class="price b1-font color-primary font-main">
+                          220.000đ
+                        </div>
+                      </div>
+                      <div class="menu-list-item" data-image="2">
+                        <div class="name b1-font color-primary font-main">
+                          Prawn cocktail, avocaodo, orange, lettuce
+                        </div>
+                        <div class="price b1-font color-primary font-main">
+                          220.000đ
+                        </div>
+                      </div>
+                      <div class="menu-list-item" data-image="3">
+                        <div class="name b1-font color-primary font-main">
+                          Greek salad, capsicum, cucumber, tomato cherry, feta
+                          cheese, sherry vinegar
+                        </div>
+                        <div class="price b1-font color-primary font-main">
+                          200.000đ
+                        </div>
+                      </div>
+                      <div class="menu-list-item" data-image="4">
+                        <div class="name b1-font color-primary font-main">
+                          Tuna nicoise, lettuce, quail egg, potato, tomato
+                          cherry, french bean
+                        </div>
+                        <div class="price b1-font color-primary font-main">
+                          220.000đ
+                        </div>
+                      </div>
+                      <div class="menu-list-item" data-image="5">
+                        <div class="name b1-font color-primary font-main">
+                          Prawn cocktail, avocaodo, orange, lettuce
+                        </div>
+                        <div class="price b1-font color-primary font-main">
+                          220.000đ
+                        </div>
+                      </div>
+                      <div class="menu-list-item" data-image="6">
+                        <div class="name b1-font color-primary font-main">
+                          Tuna nicoise, lettuce, quail egg, potato, tomato
+                          cherry, french bean
+                        </div>
+                        <div class="price b1-font color-primary font-main">
+                          220.000đ
+                        </div>
+                      </div>
+                      <div class="menu-list-item" data-image="7">
+                        <div class="name b1-font color-primary font-main">
+                          Prawn cocktail, avocaodo, orange, lettuce
+                        </div>
+                        <div class="price b1-font color-primary font-main">
+                          220.000đ
+                        </div>
+                      </div>
+                      <div class="menu-list-item" data-image="8">
+                        <div class="name b1-font color-primary font-main">
+                          Tuna nicoise, lettuce, quail egg, potato, tomato
+                          cherry, french bean
+                        </div>
+                        <div class="price b1-font color-primary font-main">
+                          220.000đ
+                        </div>
+                      </div>
+                      <div class="menu-list-item" data-image="9">
+                        <div class="name b1-font color-primary font-main">
+                          Prawn cocktail, avocaodo, orange, lettuce
+                        </div>
+                        <div class="price b1-font color-primary font-main">
+                          220.000đ
+                        </div>
+                      </div>
+                    </div>
+                    <div class="menu-cta-group">
+                      <a
+                        href=""
+                        class="cta-global cta-book b2-font color-primary font-main text-uppercase"
+                        >Book a table</a
+                      >
+                      <a
+                        href=""
+                        class="cta-global cta-view b2-font color-primary font-main text-uppercase"
+                        target="_blank"
+                      >
+                        View menu PDF</a
+                      >
+                    </div>
+                  </div>
+
+                  <div class="menu-list-img">
+                    <div class="menu-img active" data-index="0">
+                      <img src="./assets/images/draf/galler-2.webp" alt="" />
+                    </div>
+                    <div class="menu-img" data-index="1">
+                      <img src="./assets/images/draf/galler-1.webp" alt="" />
+                    </div>
+                    <div class="menu-img" data-index="2">
+                      <img src="./assets/images/draf/galler-3.webp" alt="" />
+                    </div>
+                    <div class="menu-img" data-index="3">
+                      <img src="./assets/images/draf/galler-2.webp" alt="" />
+                    </div>
+                    <div class="menu-img" data-index="4">
+                      <img src="./assets/images/draf/galler-1.webp" alt="" />
+                    </div>
+                    <div class="menu-img" data-index="5">
+                      <img src="./assets/images/draf/galler-3.webp" alt="" />
+                    </div>
+                    <div class="menu-img" data-index="6">
+                      <img src="./assets/images/draf/galler-1.webp" alt="" />
+                    </div>
+                    <div class="menu-img" data-index="7">
+                      <img src="./assets/images/draf/galler-3.webp" alt="" />
+                    </div>
+                    <div class="menu-img" data-index="8">
+                      <img src="./assets/images/draf/galler-1.webp" alt="" />
+                    </div>
+                    <div class="menu-img" data-index="9">
+                      <img src="./assets/images/draf/galler-3.webp" alt="" />
+                    </div>
+                  </div>
                 </div>
-              </button>
-            </li>
-          </ul>
-        </div>
-        <div class="section-menu-result">
-          <div class="tab-content" id="pills-tabContent">
-            <div
-              class="tab-pane fade show active"
-              id="pills-food"
-              role="tabpanel"
-              aria-labelledby="pills-food-tab"
-            >
-              ...
+              </div>
+              <div
+                class="tab-pane fade"
+                id="pills-drink"
+                role="tabpanel"
+                aria-labelledby="pills-drink-tab"
+              >
+                <div class="menu-list-inner">
+                  <div class="menu-list-left">
+                    <div class="menu-list-name" data-lenis-prevent>
+                      <div class="menu-list-item active" data-image="0">
+                        <div class="name b1-font color-primary font-main">
+                          Greek salad, capsicum, cucumber, tomato cherry, feta
+                          cheese, sherry vinegar
+                        </div>
+                        <div class="price b1-font color-primary font-main">
+                          200.000đ
+                        </div>
+                      </div>
+                      <div class="menu-list-item" data-image="1">
+                        <div class="name b1-font color-primary font-main">
+                          Tuna nicoise, lettuce, quail egg, potato, tomato
+                          cherry, french bean
+                        </div>
+                        <div class="price b1-font color-primary font-main">
+                          220.000đ
+                        </div>
+                      </div>
+                      <div class="menu-list-item" data-image="2">
+                        <div class="name b1-font color-primary font-main">
+                          Prawn cocktail, avocaodo, orange, lettuce
+                        </div>
+                        <div class="price b1-font color-primary font-main">
+                          220.000đ
+                        </div>
+                      </div>
+                      <div class="menu-list-item" data-image="3">
+                        <div class="name b1-font color-primary font-main">
+                          Greek salad, capsicum, cucumber, tomato cherry, feta
+                          cheese, sherry vinegar
+                        </div>
+                        <div class="price b1-font color-primary font-main">
+                          200.000đ
+                        </div>
+                      </div>
+                      <div class="menu-list-item" data-image="4">
+                        <div class="name b1-font color-primary font-main">
+                          Tuna nicoise, lettuce, quail egg, potato, tomato
+                          cherry, french bean
+                        </div>
+                        <div class="price b1-font color-primary font-main">
+                          220.000đ
+                        </div>
+                      </div>
+                      <div class="menu-list-item" data-image="5">
+                        <div class="name b1-font color-primary font-main">
+                          Prawn cocktail, avocaodo, orange, lettuce
+                        </div>
+                        <div class="price b1-font color-primary font-main">
+                          220.000đ
+                        </div>
+                      </div>
+                      <div class="menu-list-item" data-image="6">
+                        <div class="name b1-font color-primary font-main">
+                          Tuna nicoise, lettuce, quail egg, potato, tomato
+                          cherry, french bean
+                        </div>
+                        <div class="price b1-font color-primary font-main">
+                          220.000đ
+                        </div>
+                      </div>
+                      <div class="menu-list-item" data-image="7">
+                        <div class="name b1-font color-primary font-main">
+                          Prawn cocktail, avocaodo, orange, lettuce
+                        </div>
+                        <div class="price b1-font color-primary font-main">
+                          220.000đ
+                        </div>
+                      </div>
+                      <div class="menu-list-item" data-image="8">
+                        <div class="name b1-font color-primary font-main">
+                          Tuna nicoise, lettuce, quail egg, potato, tomato
+                          cherry, french bean
+                        </div>
+                        <div class="price b1-font color-primary font-main">
+                          220.000đ
+                        </div>
+                      </div>
+                      <div class="menu-list-item" data-image="9">
+                        <div class="name b1-font color-primary font-main">
+                          Prawn cocktail, avocaodo, orange, lettuce
+                        </div>
+                        <div class="price b1-font color-primary font-main">
+                          220.000đ
+                        </div>
+                      </div>
+                    </div>
+                    <div class="menu-cta-group">
+                      <a
+                        href=""
+                        class="cta-global cta-book b2-font color-primary font-main text-uppercase"
+                        >Book a table</a
+                      >
+                      <a
+                        href=""
+                        class="cta-global cta-view b2-font color-primary font-main text-uppercase"
+                        target="_blank"
+                      >
+                        View menu PDF</a
+                      >
+                    </div>
+                  </div>
+
+                  <div class="menu-list-img">
+                    <div class="menu-img active" data-index="0">
+                      <img src="./assets/images/draf/galler-2.webp" alt="" />
+                    </div>
+                    <div class="menu-img" data-index="1">
+                      <img src="./assets/images/draf/galler-1.webp" alt="" />
+                    </div>
+                    <div class="menu-img" data-index="2">
+                      <img src="./assets/images/draf/galler-3.webp" alt="" />
+                    </div>
+                    <div class="menu-img" data-index="3">
+                      <img src="./assets/images/draf/galler-2.webp" alt="" />
+                    </div>
+                    <div class="menu-img" data-index="4">
+                      <img src="./assets/images/draf/galler-1.webp" alt="" />
+                    </div>
+                    <div class="menu-img" data-index="5">
+                      <img src="./assets/images/draf/galler-3.webp" alt="" />
+                    </div>
+                    <div class="menu-img" data-index="6">
+                      <img src="./assets/images/draf/galler-1.webp" alt="" />
+                    </div>
+                    <div class="menu-img" data-index="7">
+                      <img src="./assets/images/draf/galler-3.webp" alt="" />
+                    </div>
+                    <div class="menu-img" data-index="8">
+                      <img src="./assets/images/draf/galler-1.webp" alt="" />
+                    </div>
+                    <div class="menu-img" data-index="9">
+                      <img src="./assets/images/draf/galler-3.webp" alt="" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="tab-pane fade"
+                id="pills-wine"
+                role="tabpanel"
+                aria-labelledby="pills-wine-tab"
+              >
+                ...
+              </div>
             </div>
-            <div
-              class="tab-pane fade"
-              id="pills-drink"
-              role="tabpanel"
-              aria-labelledby="pills-drink-tab"
-            >
-              ...
-            </div>
-            <div
-              class="tab-pane fade"
-              id="pills-wine"
-              role="tabpanel"
-              aria-labelledby="pills-wine-tab"
-            >
-              ...
-            </div>
+          </div>
+          <div class="section-menu-note b1-font color-primary font-main">
+            Prices listed do not include taxes and service charges.
           </div>
         </div>
       </section>
