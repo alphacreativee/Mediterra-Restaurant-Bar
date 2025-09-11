@@ -651,28 +651,44 @@ function galleryImg() {
 }
 function tabContentMenu() {
   if (!document.querySelector(".section-menu")) return;
-  // Tab switching functionality
   const tabButtons = document.querySelectorAll('[data-bs-toggle="pill"]');
   const contentDivs = document.querySelectorAll(".menu-content-top");
 
+  // 👉 Tính chiều cao lớn nhất
+  function adjustParentHeight() {
+    let maxHeight = 0;
+    contentDivs.forEach((div) => {
+      const h = div.offsetHeight;
+      if (h > maxHeight) {
+        maxHeight = h;
+      }
+    });
+    const parent = document.querySelector(".section-menu-top");
+    if (parent) {
+      parent.style.minHeight = maxHeight + "px";
+    }
+  }
+
+  // Gọi khi load xong
+  window.addEventListener("load", adjustParentHeight);
+  // Gọi lại khi resize
+  window.addEventListener("resize", adjustParentHeight);
+
+  // Tab switching
   tabButtons.forEach((button) => {
     button.addEventListener("click", function () {
       const targetContent = this.getAttribute("data-content");
+      contentDivs.forEach((div) => div.classList.remove("active"));
 
-      // Hide all content divs
-      contentDivs.forEach((div) => {
-        div.classList.remove("active");
-      });
-
-      // Show target content div
       setTimeout(() => {
         const targetDiv = document.querySelector(
           `[data-target="${targetContent}"]`
         );
         if (targetDiv) {
           targetDiv.classList.add("active");
+          adjustParentHeight(); // cập nhật lại chiều cao khi đổi tab
         }
-      }, 100);
+      }, 50);
     });
   });
 
@@ -687,34 +703,24 @@ function tabContentMenu() {
     menuItems.forEach((item) => {
       item.addEventListener("click", function () {
         const imageIndex = this.getAttribute("data-image");
-
-        // Remove active class from all menu items in this tab
-        menuItems.forEach((menuItem) => {
-          menuItem.classList.remove("active");
-        });
-
-        // Add active class to clicked item
+        menuItems.forEach((menuItem) => menuItem.classList.remove("active"));
         this.classList.add("active");
 
-        // Hide all images in this tab
-        menuImages.forEach((img) => {
-          img.classList.remove("active");
-        });
-
-        // Show corresponding image
+        menuImages.forEach((img) => img.classList.remove("active"));
         const targetImage = tab.querySelector(`[data-index="${imageIndex}"]`);
         if (targetImage) {
           targetImage.classList.add("active");
+          adjustParentHeight(); // gọi lại khi ảnh đổi
         }
       });
     });
   }
 
-  // Initialize menu items for all tabs
   initializeMenuItems("#pills-food");
   initializeMenuItems("#pills-drink");
   initializeMenuItems("#pills-wine");
 }
+
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
   customDropdown();
