@@ -7,11 +7,14 @@
     background-color: var(--color-white);
     padding: 40px 40px 24px;
     @media (max-width: 991px) {
-      padding: 16px 16px 12%;
+      padding: 16px 16px 12px;
     }
   }
   &-note {
     margin-top: 24px;
+    @media (max-width: 991px) {
+      margin-top: 12px;
+    }
   }
   &-tab {
     display: grid;
@@ -94,6 +97,88 @@
   .menu-list-inner {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    &-wrapper {
+      .btn-cta-mobile {
+        display: flex;
+        flex-direction: column;
+        .btn-mobile-global {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 44px;
+          font-size: 14px;
+          line-height: 22px;
+          font-weight: 600;
+          text-transform: uppercase;
+          color: var(--color-white);
+          letter-spacing: 0.1em;
+          &.cta-book {
+            background-color: var(--color-primary);
+          }
+          &.cta-view {
+            background-color: var(--color-other);
+          }
+        }
+      }
+    }
+    &-mobile {
+      border: 1px solid rgba(23, 75, 156, 0.3);
+      padding: 8px;
+
+      .accordion-item {
+        border-radius: 0;
+        border: none;
+        border-bottom: 1px solid rgba(23, 75, 156, 0.3);
+        &:first-child {
+          border-top: none;
+        }
+        &:last-child {
+          border-bottom: 1px solid rgba(23, 75, 156, 0.3);
+        }
+      }
+      .accordion-button {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 12px 8px;
+        &:not(.collapsed) {
+          background-color: var(--color-other);
+          color: var(--color-white);
+          .name,
+          .price {
+            color: var(--color-white) !important;
+          }
+        }
+        .inner {
+          display: flex;
+          align-items: flex-start;
+          gap: 24px;
+          .name,
+          .price {
+            font-size: 14px;
+            line-height: 20px;
+            color: var(--color-primary);
+            font-family: var(--font-main);
+          }
+        }
+        &::after {
+          content: unset;
+        }
+      }
+      .accordion-body {
+        padding: 0 8px 8px;
+        background-color: var(--color-other);
+        .menu-img {
+          width: 100%;
+          aspect-ratio: 280 / 235;
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+    }
   }
   .menu-list-img {
     width: 100%;
