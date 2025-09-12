@@ -198,7 +198,7 @@ function intro() {
             ease: "none",
             filter: "blur(0px)",
             y: 0,
-            stagger: 0.025,
+            stagger: 0.015,
             opacity: 1,
             duration: 0.6,
             onStart: () => {
@@ -576,7 +576,7 @@ function effectText() {
         ease: "none",
         filter: "blur(0px)",
         y: 0,
-        stagger: 0.005,
+        stagger: 0.0025,
         opacity: 1,
 
         scrollTrigger: {
