@@ -11,14 +11,14 @@
   }
   &-main {
     width: 100%;
-    height: 378px;
+    height: 376px;
     background-image: url("../../images/pattern-no-background.svg");
     background-size: auto;
     display: flex;
     justify-content: center;
     align-items: center;
     @media (max-width: 991px) {
-      height: 340px;
+      height: 339px;
     }
   }
   &-box {
@@ -29,17 +29,20 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+    height: 226px;
+    transform: translateY(1.5px);
     @media (max-width: 991px) {
       width: 245px;
       aspect-ratio: 1;
       padding: 40px 30px 16px;
       gap: 30px;
+      height: 264px;
     }
     img {
       width: 100%;
-      height: 140px;
+      height: 120px;
       @media (max-width: 991px) {
-        height: 110px;
+        height: 120px;
       }
     }
   }
