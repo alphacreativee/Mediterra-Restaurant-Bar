@@ -2,6 +2,10 @@
   .intro-wrapper {
     padding-top: 80px;
 
+    @media (max-width: 991px) {
+      padding-top: 40px;
+    }
+
     .title {
       max-width: 80%;
       margin: 0 auto;
@@ -10,13 +14,17 @@
     .desc {
       margin-top: 24px;
       @media (max-width: 991px) {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 16px;
+        padding-right: 16px;
       }
     }
 
     .marquee-container {
       margin-top: 80px;
+
+      @media (max-width: 991px) {
+        margin-top: 40px;
+      }
     }
 
     .element {

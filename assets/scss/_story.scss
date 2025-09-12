@@ -1,6 +1,11 @@
 .story {
   &-list {
     padding: 40px;
+
+    @media (max-width: 991px) {
+      padding: 16px;
+      padding-bottom: 40px;
+    }
   }
   &-image {
     width: 100%;
@@ -17,9 +22,17 @@
     flex-direction: column;
     justify-content: center;
     gap: 24px;
+
+    @media (max-width: 991px) {
+      padding: 40px 24px !important;
+    }
   }
   &-item {
     height: 100%;
+
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
 
     &:nth-child(odd) {
       .story-content {
