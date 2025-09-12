@@ -31,7 +31,9 @@
     height: 100%;
 
     &:not(:last-child) {
-      margin-bottom: 16px;
+      @media (max-width: 991px) {
+        margin-bottom: 16px;
+      }
     }
 
     &:nth-child(odd) {
