@@ -18,10 +18,19 @@
       transform: translateY(-32px);
     }
 
+    a {
+      color: var(--color-primary);
+    }
+
+    b,
+    strong {
+      font-weight: 700;
+    }
+
     h1,
     h2 {
-      font-size: 38px;
-      line-height: 65px;
+      font-size: 32px;
+      line-height: 48px;
       font-weight: 400;
       margin-bottom: 40px;
       @media (max-width: 991px) {
@@ -53,8 +62,13 @@
       margin-bottom: 8px;
     }
 
-    .wp-block-image {
+    .wp-block-image,
+    figure {
       margin: 40px 0;
+
+      @media (max-width: 991px) {
+        margin: 32px 0;
+      }
     }
 
     h4 {
