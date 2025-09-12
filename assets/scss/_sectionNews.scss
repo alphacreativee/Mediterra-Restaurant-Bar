@@ -75,8 +75,13 @@
   .content {
     padding: 24px;
 
+    @media (max-width: 991px) {
+      padding: 24px 12px;
+    }
+
     .desc {
       margin-top: 12px;
+      margin-bottom: 0 !important;
     }
 
     * {
