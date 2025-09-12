@@ -716,6 +716,25 @@ function tabContentMenu() {
   allTabs.forEach((tab) => {
     initializeMenuItems(tab);
   });
+
+  if ($(".section-menu").length < 1) return;
+
+  var params = new URLSearchParams(window.location.search);
+  var tabId = params.get("tab");
+
+  if (tabId) {
+    var $target = $(".section-menu");
+    if ($target.length) {
+      setTimeout(function () {
+        $("html, body").animate(
+          {
+            scrollTop: $target.offset().top - 80,
+          },
+          600
+        );
+      }, 500);
+    }
+  }
 }
 
 const init = () => {
