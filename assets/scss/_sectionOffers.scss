@@ -5,6 +5,13 @@
   @media (max-width: 991px) {
     padding: 40px 0;
   }
+  &.no-content {
+    @media (max-width: 991px) {
+      .offers-wrapper {
+        height: 100svh !important;
+      }
+    }
+  }
 
   .offers {
     &-background {
@@ -274,6 +281,14 @@
     background-color: var(--color-white);
     width: 435px;
     padding: 24px;
+    @media (max-width: 991px) {
+      left: 16px;
+      right: 16px;
+      width: calc(100% - 32px);
+      top: 50%;
+      transform: translateY(-50%);
+      bottom: auto;
+    }
     .box-inner {
       border: 1px solid var(--color-primary);
       height: 100%;
@@ -282,6 +297,10 @@
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
+      @media (max-width: 991px) {
+        padding: 40px 20px;
+        gap: 64px;
+      }
       h3 {
         text-align: center;
       }
