@@ -611,7 +611,7 @@ function headerMobile() {
   });
   openSubMenuMobile.addEventListener("click", (e) => {
     e.preventDefault();
-    console.log("click");
+    // console.log("click");
     mainSubMenuMobile.classList.add("active");
   });
   btnBack.addEventListener("click", () => {
