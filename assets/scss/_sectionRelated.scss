@@ -9,9 +9,12 @@
     padding-top: 40px;
     h2.title {
       margin-bottom: 24px;
-    }
-    .desc {
-      margin-bottom: 40px;
+
+      & + .desc {
+        margin-bottom: 40px;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
     }
   }
   h2.title {
