@@ -62,7 +62,7 @@
     @media (max-width: 991px) {
       border-top: 1px solid var(--color-secondary);
       border-left: none;
-      height: 68px;
+      height: auto;
       padding: 12px 30px;
       &:nth-child(1) {
         border-top: none;

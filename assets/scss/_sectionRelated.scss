@@ -1,5 +1,10 @@
 .section-related {
   padding: 0 40px 40px;
+
+  @media (max-width: 991px) {
+    padding: 0 16px 40px;
+  }
+
   &.menu-related {
     padding-top: 40px;
     h2.title {
