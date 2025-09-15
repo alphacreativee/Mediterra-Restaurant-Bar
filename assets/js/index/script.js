@@ -428,19 +428,6 @@ function bookingForm() {
           message
         };
 
-        // formBooking.find("button[type='submit']").addClass("aloading");
-
-        // setTimeout(() => {
-        //   formBooking.find("button[type='submit']").removeClass("aloading");
-        //   formBooking[0].reset();
-
-        //   formBooking.closest(".booking-form__inner").addClass("success");
-
-        //   setTimeout(() => {
-        //     formBooking.closest(".booking-form__inner").removeClass("success");
-        //   }, 10000);
-        // }, 3000);
-
         $.ajax({
           url: ajaxUrl,
           method: "POST",

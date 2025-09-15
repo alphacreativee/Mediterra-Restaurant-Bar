@@ -289,6 +289,10 @@
     align-items: center;
     justify-content: center;
     padding: 0;
+
+    @media (max-width: 991px) {
+      justify-content: flex-start;
+    }
   }
 
   .btn-close {
@@ -314,6 +318,7 @@
       right: 16px;
       width: 32px;
       height: 32px;
+      top: 10px;
     }
 
     svg {
@@ -335,7 +340,7 @@
 
   @media (max-width: 991px) {
     width: 100%;
-    padding: 40px 16px;
+    padding: 50px 16px;
   }
 
   &__inner {
@@ -373,6 +378,10 @@
       margin: 24px auto 0;
       width: calc(100% - 170px);
       display: none;
+
+      @media (max-width: 991px) {
+        width: 100%;
+      }
     }
 
     &.success {
