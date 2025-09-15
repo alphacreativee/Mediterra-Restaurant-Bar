@@ -131,6 +131,11 @@
         &.menu-item-has-children {
           position: relative;
           padding-right: 23px;
+
+          & > a {
+            pointer-events: none;
+          }
+
           &:hover {
             .sub-menu {
               clip-path: inset(0 0 0 0);
