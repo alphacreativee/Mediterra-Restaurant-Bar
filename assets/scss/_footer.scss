@@ -66,7 +66,8 @@
       border-top: 1px solid var(--color-secondary);
       border-left: none;
       height: auto;
-      padding: 12px 30px;
+      padding: 12px 20px;
+      min-height: 51px;
       &:nth-child(1) {
         border-top: none;
       }

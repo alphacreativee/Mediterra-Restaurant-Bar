@@ -440,7 +440,7 @@
 
       &::placeholder {
         color: var(--color-primary);
-        font-weight: 500;
+        font-weight: 400;
       }
 
       &[type="number"] {
@@ -491,7 +491,7 @@
         }
 
         span {
-          font-weight: 500;
+          font-weight: 400;
 
           @media (max-width: 991px) {
             font-size: 14px;
@@ -507,7 +507,7 @@
         border: 1px solid rgba($color: #174b9c, $alpha: 0.3);
 
         span {
-          font-weight: 500;
+          font-weight: 400;
 
           @media (max-width: 991px) {
             font-size: 14px;

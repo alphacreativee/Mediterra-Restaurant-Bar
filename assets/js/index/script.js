@@ -136,18 +136,19 @@ function marquee() {
   });
 }
 function intro() {
-  if (document.querySelector(".intro").length < 1) return;
+  if (!document.querySelector(".intro")) return;
 
   const tl = gsap.timeline({
     defaults: { duration: 2, ease: "power2.inOut" }
   });
-  // effect text banner
 
+  // effect text banner
   gsap.delayedCall(1, () => {
     gsap.registerPlugin(ScrollTrigger, SplitText);
 
     const masterTimeline = gsap.timeline();
 
+    // fade-in auto
     const fadeElements = gsap.utils.toArray(".data-fade-in-auto");
     if (fadeElements.length > 0) {
       fadeElements.forEach((element, index) => {
@@ -163,62 +164,58 @@ function intro() {
             y: 0,
             duration: 0.5,
             ease: "sine.out",
-            onStart: () => {
-              gsap.set(element, { opacity: 1 });
-            }
+            onStart: () => gsap.set(element, { opacity: 1 })
           },
           index * 0.1
         );
       });
     }
 
+    // effect-blur-auto (đổi thành lines slide-up auto)
     const elementsBlur = document.querySelectorAll(".effect-blur-auto");
     if (elementsBlur.length > 0) {
       elementsBlur.forEach((elementBlur, elementIndex) => {
-        let splitBlur = SplitText.create(elementBlur, {
-          type: "words, chars",
-          charsClass: "split-char"
+        const splitDescription = new SplitText(elementBlur, {
+          type: "lines",
+          linesClass: "line",
+          mask: "lines"
         });
 
-        // Tính toán delay để chạy sau fade elements
+        // delay theo sau fadeElements
         const startTime =
           fadeElements.length > 0
             ? fadeElements.length * 0.1 + 0.3 + elementIndex * 0.2
             : elementIndex * 0.2;
 
         masterTimeline.fromTo(
-          splitBlur.chars,
+          splitDescription.lines,
           {
-            filter: "blur(5px)",
-            y: 10,
-            willChange: "filter, transform",
+            yPercent: 100,
+            willChange: "transform",
             opacity: 0
           },
           {
-            ease: "none",
-            filter: "blur(0px)",
-            y: 0,
-            stagger: 0.015,
+            yPercent: 0,
             opacity: 1,
-            duration: 0.6,
-            onStart: () => {
-              gsap.set(elementBlur, { opacity: 1 });
-            }
+            duration: 1,
+            ease: "power3.out",
+            stagger: 0.05,
+            onStart: () => gsap.set(elementBlur, { opacity: 1 })
           },
           startTime
         );
       });
     }
 
+    // reset will-change
     masterTimeline.call(() => {
       gsap.utils
         .toArray(".data-fade-in-auto, .effect-blur-auto")
-        .forEach((el) => {
-          gsap.set(el, { willChange: "auto" });
-        });
+        .forEach((el) => gsap.set(el, { willChange: "auto" }));
     });
   });
-  // effect text auto banner
+
+  // effect text auto banner (intro clip)
   tl.fromTo(
     ".intro",
     { clipPath: "inset(0% 0% 0% 0%)" },
@@ -230,6 +227,7 @@ function intro() {
     }
   );
 }
+
 function itemEffect() {
   if (
     $(".js-parallax").length < 1 &&
@@ -558,34 +556,62 @@ function effectText() {
       }
     );
   });
-  const elementsBlur = document.querySelectorAll(".effect-blur");
-  elementsBlur.forEach((elementBlur) => {
-    let splitBlur = SplitText.create(elementBlur, {
-      type: "words, chars",
-      charsClass: "split-char"
+
+  gsap.utils.toArray(".effect-blur").forEach((description) => {
+    const splitDescription = new SplitText(description, {
+      type: "lines",
+      linesClass: "line",
+      mask: "lines"
     });
+
     gsap.fromTo(
-      splitBlur.chars,
+      splitDescription.lines,
       {
-        filter: "blur(5px) ",
-        y: 10,
-        willChange: "filter, transform",
-        opacity: 0
+        yPercent: 100,
+        willChange: "transform"
       },
       {
-        ease: "none",
-        filter: "blur(0px)",
-        y: 0,
-        stagger: 0.0025,
-        opacity: 1,
+        yPercent: 0,
+        duration: 1,
+        ease: "power3.out",
+        stagger: 0.05,
 
         scrollTrigger: {
-          trigger: elementBlur,
-          start: "top 80%"
+          trigger: description,
+          start: "top 60%"
+          // markers: true,
         }
       }
     );
   });
+  // const elementsBlur = document.querySelectorAll(".effect-blur");
+  // elementsBlur.forEach((elementBlur) => {
+  //   let splitBlur = SplitText.create(elementBlur, {
+  //     type: "words, chars",
+  //     charsClass: "split-char"
+  //   });
+  //   gsap.fromTo(
+  //     splitBlur.chars,
+  //     {
+  //       filter: "blur(5px) ",
+  //       y: 10,
+  //       willChange: "filter, transform",
+  //       opacity: 0
+  //     },
+  //     {
+  //       ease: "none",
+  //       filter: "blur(0px)",
+  //       y: 0,
+  //       stagger: 0.0025,
+  //       opacity: 1,
+
+  //       scrollTrigger: {
+  //         trigger: elementBlur,
+  //         start: "top 80%"
+  //       }
+  //     }
+  //   );
+  // });
 }
 function headerMobile() {
   if (window.innerWidth > 991) return;
