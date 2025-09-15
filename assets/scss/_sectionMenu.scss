@@ -125,7 +125,22 @@
     &-mobile {
       border: 1px solid rgba(23, 75, 156, 0.3);
       padding: 8px;
+      @media (max-width: 991px) {
+        max-height: 1200px;
+        height: auto;
+        overflow-y: scroll;
+        &::-webkit-scrollbar {
+          width: 2px;
+        }
 
+        &::-webkit-scrollbar-track {
+          background: transparent; /* Track background */
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: var(--color-primary); /* Thumb color */
+        }
+      }
       .accordion-item {
         border-radius: 0;
         border: none;
