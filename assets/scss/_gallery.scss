@@ -33,3 +33,15 @@
     }
   }
 }
+
+@media (min-width: 768px) {
+  .gslide-image img {
+    min-height: 600px;
+  }
+}
+
+@media (max-width: 767px) {
+  .glightbox-container .ginner-container {
+    width: calc(100% - 32px);
+  }
+}
