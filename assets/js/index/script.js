@@ -546,8 +546,8 @@ function effectText() {
       {
         scrollTrigger: {
           trigger: element,
-          start: "top 90%",
-          end: "bottom 90%"
+          start: "top 80%",
+          end: "bottom 80%"
         },
         opacity: 1,
         y: 0,
@@ -578,7 +578,7 @@ function effectText() {
 
         scrollTrigger: {
           trigger: description,
-          start: "top 60%"
+          start: "top 80%"
           // markers: true,
         }
       }

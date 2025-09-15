@@ -343,8 +343,8 @@
     position: relative;
     z-index: 2;
     width: 496px;
-    min-height: 644px;
-    height: auto;
+    // height: auto;
+    height: 644px;
     background-color: var(--color-white);
     display: flex;
     flex-direction: column;

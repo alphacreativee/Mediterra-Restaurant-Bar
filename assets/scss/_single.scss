@@ -69,6 +69,11 @@
       @media (max-width: 991px) {
         margin: 32px 0;
       }
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
     }
 
     h4 {
