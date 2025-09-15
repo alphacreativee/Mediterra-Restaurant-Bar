@@ -646,6 +646,7 @@ function galleryImg() {
   if (!document.querySelector(".section-gallery")) return;
   var lightboxDescription = GLightbox({
     selector: ".glightbox",
+    loop: true,
     touchNavigation: true
   });
 }
@@ -736,6 +737,38 @@ function tabContentMenu() {
     }
   }
 }
+function sectionNews() {
+  if ($(".section-news").length < 1) return;
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const items = gsap.utils.toArray(".section-news .news-list__item");
+  let perRow = 3;
+
+  if (window.innerWidth < 768) {
+    perRow = 1;
+  } else if (window.innerWidth < 992) {
+    perRow = 2;
+  }
+
+  const groups = [];
+  for (let i = 0; i < items.length; i += perRow) {
+    groups.push(items.slice(i, i + perRow));
+  }
+
+  groups.forEach((group) => {
+    gsap.from(group, {
+      scrollTrigger: {
+        trigger: group[0],
+        start: "top 80%"
+      },
+      opacity: 0,
+      y: 20,
+      duration: 0.6,
+      stagger: 0.2
+    });
+  });
+}
 
 const init = () => {
   gsap.registerPlugin(ScrollTrigger);
@@ -752,6 +785,7 @@ const init = () => {
   sectionRelated();
   galleryImg();
   tabContentMenu();
+  sectionNews();
 };
 preloadImages("img").then(() => {
   // Once images are preloaded, remove the 'loading' indicator/class from the body
