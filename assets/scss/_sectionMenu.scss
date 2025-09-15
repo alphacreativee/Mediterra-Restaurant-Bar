@@ -153,12 +153,23 @@
           display: flex;
           align-items: flex-start;
           gap: 24px;
+          width: 100%;
+          justify-content: space-between;
           .name,
           .price {
             font-size: 14px;
             line-height: 20px;
             color: var(--color-primary);
             font-family: var(--font-main);
+          }
+
+          .name {
+            font-weight: 600;
+          }
+
+          .desc {
+            margin-top: 4px;
+            font-weight: 400;
           }
         }
         &::after {
@@ -250,6 +261,7 @@
   .menu-list {
     &-name {
       border: 1px solid rgba(23, 75, 156, 0.3);
+      border-right: unset;
       padding: 12px;
       padding-bottom: 54px;
       overflow-y: auto;
@@ -286,6 +298,15 @@
       .name,
       .price {
         transition: all 0.3s ease;
+      }
+      .name {
+        font-weight: 600;
+      }
+      .desc {
+        font-size: 14px;
+        line-height: 22px;
+        margin-top: 2px;
+        font-weight: 400;
       }
       &:hover,
       &.active {
