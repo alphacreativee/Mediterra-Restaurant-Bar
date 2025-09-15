@@ -336,15 +336,15 @@
         gap: 40px;
         & > li.menu-item-has-children > a {
           position: relative;
-          padding-left: 17px;
+          // padding-left: 17px;
           &::after {
             content: "";
             position: absolute;
-            left: 0;
+            right: -17px;
             top: 50%;
             width: 5px;
             height: 11px;
-            transform: translateY(-50%);
+            transform: translateY(-50%) rotate(180deg);
             background-image: url("../../images/ic_arrow_left_yellow.svg");
             background-size: contain;
             background-repeat: no-repeat;
