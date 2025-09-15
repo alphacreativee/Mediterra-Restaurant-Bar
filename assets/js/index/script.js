@@ -114,7 +114,7 @@ function marquee() {
     gsap.set(content, {
       x: 0,
       willChange: "transform",
-      force3D: true
+      force3D: true,
     });
 
     const tl = gsap.timeline({ repeat: -1 });
@@ -123,8 +123,8 @@ function marquee() {
       duration: fullWidth / speed,
       ease: "none",
       modifiers: {
-        x: (x) => `${parseFloat(x) % fullWidth}px`
-      }
+        x: (x) => `${parseFloat(x) % fullWidth}px`,
+      },
     });
 
     // Hover pause
@@ -139,7 +139,7 @@ function intro() {
   if (!document.querySelector(".intro")) return;
 
   const tl = gsap.timeline({
-    defaults: { duration: 2, ease: "power2.inOut" }
+    defaults: { duration: 2, ease: "power2.inOut" },
   });
 
   // effect text banner
@@ -157,14 +157,14 @@ function intro() {
           {
             "will-change": "opacity, transform",
             opacity: 0,
-            y: 20
+            y: 20,
           },
           {
             opacity: 1,
             y: 0,
             duration: 0.5,
             ease: "sine.out",
-            onStart: () => gsap.set(element, { opacity: 1 })
+            onStart: () => gsap.set(element, { opacity: 1 }),
           },
           index * 0.1
         );
@@ -178,7 +178,7 @@ function intro() {
         const splitDescription = new SplitText(elementBlur, {
           type: "lines",
           linesClass: "line",
-          mask: "lines"
+          mask: "lines",
         });
 
         // delay theo sau fadeElements
@@ -192,7 +192,7 @@ function intro() {
           {
             yPercent: 100,
             willChange: "transform",
-            opacity: 0
+            opacity: 0,
           },
           {
             yPercent: 0,
@@ -200,7 +200,7 @@ function intro() {
             duration: 1,
             ease: "power3.out",
             stagger: 0.05,
-            onStart: () => gsap.set(elementBlur, { opacity: 1 })
+            onStart: () => gsap.set(elementBlur, { opacity: 1 }),
           },
           startTime
         );
@@ -223,7 +223,7 @@ function intro() {
       clipPath: "inset(0% 0% 100% 0%)",
       onComplete: () => {
         document.querySelector(".intro").classList.add("d-none");
-      }
+      },
     }
   );
 }
@@ -253,9 +253,9 @@ function itemEffect() {
           end: "bottom top",
           scrub: 1,
           ease: "power4",
-          delay: 0.2
+          delay: 0.2,
           // markers: true
-        }
+        },
       }
     );
   });
@@ -274,8 +274,8 @@ function itemEffect() {
         trigger: section,
         start: "top 80%",
         end: "bottom top",
-        scrub: true
-      }
+        scrub: true,
+      },
     });
   });
 
@@ -285,18 +285,18 @@ function itemEffect() {
       {
         "will-change": "opacity, transform",
         opacity: 0,
-        y: 40
+        y: 40,
       },
       {
         scrollTrigger: {
           trigger: element,
           start: "top 90%",
-          end: "bottom 90%"
+          end: "bottom 90%",
         },
         opacity: 1,
         y: 0,
         duration: 0.7,
-        ease: "sine.out"
+        ease: "sine.out",
       }
     );
   });
@@ -343,7 +343,7 @@ function bookingForm() {
             dateField.value = start.format("DD/MM/YYYY");
             dateField.classList.remove("error");
           }
-        }
+        },
       });
     }
 
@@ -425,7 +425,7 @@ function bookingForm() {
           fullname,
           email,
           phone,
-          message
+          message,
         };
 
         $.ajax({
@@ -457,7 +457,7 @@ function bookingForm() {
           error: function (xhr, status, error) {
             console.error(xhr.responseText);
             alert("Có lỗi xảy ra, vui lòng thử lại.");
-          }
+          },
         });
       }
     });
@@ -473,7 +473,7 @@ function CTA() {
       self.direction === 1
         ? document.querySelector(".cta").classList.add("hide")
         : document.querySelector(".cta").classList.remove("hide");
-    }
+    },
   });
 }
 function hero() {
@@ -484,7 +484,7 @@ function hero() {
       speed: 1500,
       loop: true,
       autoplay: {
-        delay: 3000
+        delay: 3000,
       },
 
       on: {
@@ -515,8 +515,8 @@ function hero() {
               slideInner.style.transition = `${speed}ms ${easing}`;
             }
           });
-        }
-      }
+        },
+      },
     });
   });
 }
@@ -528,18 +528,18 @@ function effectText() {
       {
         "will-change": "opacity, transform",
         opacity: 0,
-        y: 20
+        y: 20,
       },
       {
         scrollTrigger: {
           trigger: element,
           start: "top 80%",
-          end: "bottom 80%"
+          end: "bottom 80%",
         },
         opacity: 1,
         y: 0,
         duration: 0.5,
-        ease: "sine.out"
+        ease: "sine.out",
       }
     );
   });
@@ -548,14 +548,14 @@ function effectText() {
     const splitDescription = new SplitText(description, {
       type: "lines",
       linesClass: "line",
-      mask: "lines"
+      mask: "lines",
     });
 
     gsap.fromTo(
       splitDescription.lines,
       {
         yPercent: 100,
-        willChange: "transform"
+        willChange: "transform",
       },
       {
         yPercent: 0,
@@ -565,9 +565,9 @@ function effectText() {
 
         scrollTrigger: {
           trigger: description,
-          start: "top 80%"
+          start: "top 80%",
           // markers: true,
-        }
+        },
       }
     );
   });
@@ -615,11 +615,15 @@ function headerMobile() {
   const btnBack = document.querySelector(".header-overlay-main .menu-back");
   openMenu.addEventListener("click", () => {
     headerOverlay.classList.add("active");
+    document.querySelector("body").style.overflow = "hidden";
+    lenis.stop();
   });
   closeMenu.addEventListener("click", () => {
     setTimeout(() => {
       headerOverlay.classList.remove("active");
+      document.querySelector("body").style.overflow = "auto";
       mainSubMenuMobile.classList.remove("active");
+      lenis.start();
     }, 100);
   });
   openSubMenuMobile.addEventListener("click", (e) => {
@@ -640,18 +644,18 @@ function sectionRelated() {
     spaceBetween: 20,
     navigation: {
       nextEl: ".swiper-button-next.custom-arrow",
-      prevEl: ".swiper-button-prev.custom-arrow"
+      prevEl: ".swiper-button-prev.custom-arrow",
     },
     breakpoints: {
       768: {
         slidesPerView: 2,
-        spaceBetween: 30
+        spaceBetween: 30,
       },
       1024: {
         slidesPerView: 3,
-        spaceBetween: 40
-      }
-    }
+        spaceBetween: 40,
+      },
+    },
   });
 }
 
@@ -660,7 +664,7 @@ function galleryImg() {
   var lightboxDescription = GLightbox({
     selector: ".glightbox",
     loop: true,
-    touchNavigation: true
+    touchNavigation: true,
   });
 }
 function tabContentMenu() {
@@ -742,7 +746,7 @@ function tabContentMenu() {
       setTimeout(function () {
         $("html, body").animate(
           {
-            scrollTop: $target.offset().top - 80
+            scrollTop: $target.offset().top - 80,
           },
           600
         );
@@ -773,12 +777,12 @@ function sectionNews() {
     gsap.from(group, {
       scrollTrigger: {
         trigger: group[0],
-        start: "top 80%"
+        start: "top 80%",
       },
       opacity: 0,
       y: 20,
       duration: 0.6,
-      stagger: 0.2
+      stagger: 0.2,
     });
   });
 }
