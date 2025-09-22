@@ -348,13 +348,17 @@
     position: relative;
     z-index: 2;
     width: 496px;
-    // height: auto;
-    height: 644px;
+    height: auto;
+    // height: 644px;
     background-color: var(--color-white);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    .BookingBox {
+      width: 100%;
+    }
 
     @media (max-width: 991px) {
       width: 100%;

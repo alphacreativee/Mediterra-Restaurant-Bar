@@ -53,6 +53,17 @@
     <div id="cta" class="cta"></div>
     <!-- layout -->
     <!-- header -->
+    <script type="text/javascript">
+      (function () {
+        var st = document.createElement("script");
+        st.type = "text/javascript";
+        st.async = true;
+        st.src = "//book.easytable.com/book/widget/v3/book.js";
+        var sc = document.getElementsByTagName("script")[0];
+        sc.parentNode.insertBefore(st, sc);
+      })();
+    </script>
+
     <script>
       fetch("./components/header.html")
         .then((response) => response.text())
@@ -448,108 +459,19 @@
           <div class="booking-form">
             <div class="booking-form__wrapper">
               <div class="booking-form__inner">
-                <h2
-                  class="title h1-font font-hand color-primary text-center data-fade-in"
-                >
-                  Book a table
-                </h2>
-                <form action="">
-                  <div class="field-group">
-                    <div class="field">
-                      <input
-                        type="text"
-                        name="date"
-                        placeholder="Arrival"
-                        autocomplete="off"
-                        readonly
-                      />
-                    </div>
-                    <div class="field">
-                      <div class="dropdown-custom">
-                        <div class="dropdown-custom-btn" name="time">
-                          <div class="value-select">
-                            <span>Time</span>
-                          </div>
-                          <div class="icon">
-                            <img src="./assets/images/ic-watch.svg" alt="" />
-                          </div>
-                        </div>
-                        <div class="dropdown-custom-menu">
-                          <div class="dropdown-custom-item">
-                            <span>17:30</span>
-                          </div>
-
-                          <div class="dropdown-custom-item">
-                            <span>18:00</span>
-                          </div>
-                          <div class="dropdown-custom-item">
-                            <span>18:00</span>
-                          </div>
-                          <div class="dropdown-custom-item">
-                            <span>18:30</span>
-                          </div>
-                          <div class="dropdown-custom-item">
-                            <span>19:00</span>
-                          </div>
-                          <div class="dropdown-custom-item">
-                            <span>19:30</span>
-                          </div>
-                          <div class="dropdown-custom-item">
-                            <span>20:00</span>
-                          </div>
-                          <div class="dropdown-custom-item">
-                            <span>20:30</span>
-                          </div>
-                          <div class="dropdown-custom-item">
-                            <span>21:00</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="field-group">
-                    <div class="field">
-                      <input
-                        type="number"
-                        name="adult"
-                        placeholder="Adults"
-                        autocomplete="off"
-                      />
-                    </div>
-                    <div class="field">
-                      <input
-                        type="number"
-                        name="child"
-                        placeholder="Children (<6 yrs old)"
-                        autocomplete="off"
-                      />
-                    </div>
-                  </div>
-                  <div class="field">
-                    <input type="text" placeholder="Fullname" name="fullname" />
-                  </div>
-                  <div class="field">
-                    <input type="email" placeholder="Email" name="email" />
-                  </div>
-                  <div class="field">
-                    <input type="text" placeholder="Phone" name="phone" />
-                  </div>
-                  <div class="field">
-                    <textarea
-                      name="message"
-                      placeholder="Special request"
-                    ></textarea>
-                  </div>
-                  <button type="submit">SUBMIT REQUEST</button>
-                </form>
-
-                <div class="logo">
-                  <img src="./assets/images/logo-yellow.svg" alt="" />
+                <!-- easyTableBooking START -->
+                <div class="BookingBox" data-place="c6599" data-lang="auto">
+                  <span
+                    >In cooperation with
+                    <a
+                      href="http://easytable.com/"
+                      target="_blank"
+                      title="Restaurant reservation and booking system"
+                      >easyTable.com</a
+                    ></span
+                  >
                 </div>
-                <div class="message b1-font color-primary text-center">
-                  Đặt bàn thành công, đội ngũ tư vấn sẽ gọi điện cho bạn để xác
-                  nhận. Cám ơn bạn đã liên hệ.
-                </div>
+                <!-- easyTableBooking END -->
               </div>
             </div>
           </div>
@@ -641,110 +563,19 @@
             <div class="booking-form">
               <div class="booking-form__wrapper">
                 <div class="booking-form__inner">
-                  <h2 class="title h1-font font-hand color-primary text-center">
-                    Book a table
-                  </h2>
-                  <form action="">
-                    <div class="field-group">
-                      <div class="field">
-                        <input
-                          type="text"
-                          name="date"
-                          placeholder="Arrival"
-                          autocomplete="off"
-                          readonly
-                        />
-                      </div>
-                      <div class="field">
-                        <div class="dropdown-custom">
-                          <div class="dropdown-custom-btn" name="time">
-                            <div class="value-select">
-                              <span>Time</span>
-                            </div>
-                            <div class="icon">
-                              <img src="./assets/images/ic-watch.svg" alt="" />
-                            </div>
-                          </div>
-                          <div class="dropdown-custom-menu">
-                            <div class="dropdown-custom-item">
-                              <span>17:30</span>
-                            </div>
-
-                            <div class="dropdown-custom-item">
-                              <span>18:00</span>
-                            </div>
-                            <div class="dropdown-custom-item">
-                              <span>18:00</span>
-                            </div>
-                            <div class="dropdown-custom-item">
-                              <span>18:30</span>
-                            </div>
-                            <div class="dropdown-custom-item">
-                              <span>19:00</span>
-                            </div>
-                            <div class="dropdown-custom-item">
-                              <span>19:30</span>
-                            </div>
-                            <div class="dropdown-custom-item">
-                              <span>20:00</span>
-                            </div>
-                            <div class="dropdown-custom-item">
-                              <span>20:30</span>
-                            </div>
-                            <div class="dropdown-custom-item">
-                              <span>21:00</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="field-group">
-                      <div class="field">
-                        <input
-                          type="number"
-                          name="adult"
-                          placeholder="Adults"
-                          autocomplete="off"
-                        />
-                      </div>
-                      <div class="field">
-                        <input
-                          type="number"
-                          name="child"
-                          placeholder="Children (<6 yrs old)"
-                          autocomplete="off"
-                        />
-                      </div>
-                    </div>
-                    <div class="field">
-                      <input
-                        type="text"
-                        placeholder="Fullname"
-                        name="fullname"
-                      />
-                    </div>
-                    <div class="field">
-                      <input type="email" placeholder="Email" name="email" />
-                    </div>
-                    <div class="field">
-                      <input type="text" placeholder="Phone" name="phone" />
-                    </div>
-                    <div class="field">
-                      <textarea
-                        name="message"
-                        placeholder="Special request"
-                      ></textarea>
-                    </div>
-                    <button type="submit">SUBMIT REQUEST</button>
-                  </form>
-
-                  <div class="logo">
-                    <img src="./assets/images/logo-yellow.svg" alt="" />
+                  <!-- easyTableBooking START -->
+                  <div class="BookingBox" data-place="c6599" data-lang="vi">
+                    <span
+                      >In cooperation with
+                      <a
+                        href="http://easytable.com/"
+                        target="_blank"
+                        title="Restaurant reservation and booking system"
+                        >easyTable.com</a
+                      ></span
+                    >
                   </div>
-                  <div class="message b1-font color-primary text-center">
-                    Đặt bàn thành công, đội ngũ tư vấn sẽ gọi điện cho bạn để
-                    xác nhận. Cám ơn bạn đã liên hệ.
-                  </div>
+                  <!-- easyTableBooking END -->
                 </div>
               </div>
             </div>
