@@ -40,32 +40,44 @@
     }
   }
   &-content {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 5;
+
+    @media (max-width: 991px) {
+      width: 80%;
+    }
+
     &-hand {
-      position: absolute;
-      bottom: 133px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 3;
-      text-align: center;
-      @media (max-width: 991px) {
-        font-size: 24px;
-        line-height: 32px;
-        max-width: 300px;
-        width: 100%;
-        bottom: 94px;
-      }
+      // position: absolute;
+      // bottom: 150px;
+      // left: 50%;
+      // transform: translateX(-50%);
+      // z-index: 3;
+      // text-align: center;
+      // @media (max-width: 991px) {
+      //   font-size: 30px;
+      //   line-height: 32px;
+      //   max-width: 300px;
+      //   width: 100%;
+      //   bottom: 100px;
+      // }
     }
     &-title {
-      position: absolute;
-      bottom: 50px;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      z-index: 5;
+      margin: 10px auto 0;
+      width: 100%;
+      max-width: 800px;
+      // position: absolute;
+      // bottom: 50px;
+      // left: 50%;
+      // transform: translateX(-50%);
+      // text-align: center;
+      // z-index: 5;
       @media (max-width: 991px) {
-        max-width: 300px;
-        width: 100%;
-        bottom: 40px;
+        margin: 0 auto;
       }
     }
   }

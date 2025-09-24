@@ -6,9 +6,13 @@
     padding: 40px 0;
   }
   &.no-content {
+    .offers-wrapper {
+      height: calc(100vh - 160px) !important;
+    }
+
     @media (max-width: 991px) {
       .offers-wrapper {
-        height: 100svh !important;
+        height: calc(100svh - 130px) !important;
       }
     }
   }
@@ -69,7 +73,7 @@
       }
 
       .desc {
-        margin-top: 6px;
+        margin-top: 16px;
 
         @media (max-width: 991px) {
           max-width: 80%;

@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'DS Gabriele';
+    src: url('DSGabriele.eot');
+    src: url('DSGabriele.eot?#iefix') format('embedded-opentype'),
+        url('DSGabriele.woff2') format('woff2'),
+        url('DSGabriele.woff') format('woff'),
+        url('DSGabriele.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
