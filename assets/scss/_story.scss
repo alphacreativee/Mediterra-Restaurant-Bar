@@ -37,6 +37,12 @@
       }
     }
 
+    .story-content {
+      h2 {
+        color: var(--color-secondary) !important;
+      }
+    }
+
     &:nth-child(odd) {
       .story-content {
         background-color: var(--color-primary);
