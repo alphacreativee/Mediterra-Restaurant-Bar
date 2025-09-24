@@ -358,11 +358,17 @@
 
     .BookingBox {
       width: 100%;
+
+      iframe {
+        width: 100% !important;
+        min-width: unset !important;
+        max-width: 100% !important;
+      }
     }
 
     @media (max-width: 991px) {
       width: 100%;
-      padding: 24px;
+      padding: 0;
       min-height: 606px;
     }
 
@@ -683,4 +689,8 @@
     fill: var(--color-primary);
     transition: all 0.4s ease;
   }
+}
+
+.gslide-image img {
+  width: 100%;
 }

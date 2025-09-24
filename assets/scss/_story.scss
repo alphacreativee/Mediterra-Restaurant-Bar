@@ -22,6 +22,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 24px;
+    padding: 0 120px;
 
     @media (max-width: 991px) {
       padding: 40px 24px !important;
@@ -39,8 +40,6 @@
     &:nth-child(odd) {
       .story-content {
         background-color: var(--color-primary);
-        padding-left: 64px;
-        padding-right: 115px;
         & > * {
           color: var(--color-white);
         }
@@ -49,8 +48,6 @@
     &:nth-child(even) {
       .story-content {
         background-color: var(--color-white);
-        padding-right: 64px;
-        padding-left: 115px;
         & > * {
           color: var(--color-primary);
         }
